@@ -76,7 +76,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- HEADER -->
             <StackPanel Grid.Row="0"
                         VerticalAlignment="Center">
                 <TextBlock Text="Neo4J Database Setup"

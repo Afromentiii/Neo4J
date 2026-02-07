@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Neo4J
 {
     /// <summary>
@@ -24,10 +25,8 @@ namespace Neo4J
 
         private void BtnInstall_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            App.Current.MainWindow = main;
-            main.Show();
-            this.Close();
+            ((App)Application.Current).ShowWindow(new MainWindow());
+            ((App)Application.Current).CloseWindow(this);
         }
     }
 }

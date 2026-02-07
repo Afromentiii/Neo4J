@@ -48,11 +48,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Visual\\Neo4J\\Neo4J.csproj",
+      "projectUniqueName": "E:\\Visual\\Neo4JGIT\\Neo4J\\Neo4J.csproj",
       "projectName": "Neo4J",
-      "projectPath": "E:\\Visual\\Neo4J\\Neo4J.csproj",
+      "projectPath": "E:\\Visual\\Neo4JGIT\\Neo4J\\Neo4J.csproj",
       "packagesPath": "C:\\Users\\afrom\\.nuget\\packages\\",
-      "outputPath": "E:\\Visual\\Neo4J\\obj\\",
+      "outputPath": "E:\\Visual\\Neo4JGIT\\Neo4J\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\afrom\\AppData\\Roaming\\NuGet\\NuGet.Config",

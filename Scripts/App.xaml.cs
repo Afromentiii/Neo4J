@@ -8,17 +8,22 @@ namespace Neo4J
 {
     public partial class App : Application
     {
-        private void CreateShowWindow(Window windowObject)
+        public void ShowWindow(Window windowObject)
         {
             Application.Current.MainWindow = windowObject;
             windowObject.Show();
+        }
+
+        public void CloseWindow(Window windowObject)
+        {
+            windowObject.Close();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             if (Settings.Default.IsInstalled == false)
             {
-                CreateShowWindow(new InstallWindow());
+                ShowWindow(new InstallWindow());
             }
         }
     }
