@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "QtxDphnBXOg=",
+  "success": true,
+  "projectFilePath": "E:\\Visual\\Neo4J\\Neo4J.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\afrom\\.nuget\\packages\\neo4j.driver\\6.0.0\\neo4j.driver.6.0.0.nupkg.sha512",
+    "C:\\Users\\afrom\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.57\\microsoft.windows.sdk.net.ref.10.0.17763.57.nupkg.sha512"
+  ],
+  "logs": []
+}
