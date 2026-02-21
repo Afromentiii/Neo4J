@@ -90,7 +90,6 @@
                            HorizontalAlignment="Center"/>
             </StackPanel>
 
-            <!-- CONTENT -->
             <StackPanel Grid.Row="1"
                         Margin="40,0,40,20">
 
