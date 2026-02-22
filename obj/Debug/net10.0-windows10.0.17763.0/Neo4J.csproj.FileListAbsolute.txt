@@ -61,3 +61,7 @@ E:\Visual\Neo4JGIT\Neo4J\obj\Debug\net10.0-windows10.0.17763.0\refint\Neo4J.dll
 E:\Visual\Neo4JGIT\Neo4J\obj\Debug\net10.0-windows10.0.17763.0\Neo4J.pdb
 E:\Visual\Neo4JGIT\Neo4J\obj\Debug\net10.0-windows10.0.17763.0\Neo4J.genruntimeconfig.cache
 E:\Visual\Neo4JGIT\Neo4J\obj\Debug\net10.0-windows10.0.17763.0\ref\Neo4J.dll
+E:\Visual\Neo4JGIT\Neo4J\obj\Debug\net10.0-windows10.0.17763.0\LoginRegisterWindow.baml
+E:\Visual\Neo4JGIT\Neo4J\obj\Debug\net10.0-windows10.0.17763.0\LoginRegisterWindow.g.cs
+E:\Visual\Neo4JGIT\Neo4J\bin\Debug\net10.0-windows10.0.17763.0\DevOne.Security.Cryptography.BCrypt.dll
+E:\Visual\Neo4JGIT\Neo4J\bin\Debug\net10.0-windows10.0.17763.0\BCrypt.Net-Next.dll

@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "E:\\Visual\\Neo4JGIT\\Neo4J\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\installwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:installwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\loginregisterwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\loginregisterwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,74 +38,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\User.cs",
+              "RelativeDocumentMoniker": "Scripts\\User.cs",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\User.cs",
+              "RelativeToolTip": "Scripts\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T16:03:47.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "InstallWindow.xaml.cs",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\InstallWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Scripts\\InstallWindow.xaml.cs",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\InstallWindow.xaml.cs",
+              "RelativeToolTip": "Scripts\\InstallWindow.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwDQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T15:40:51.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Neo4jDriver.cs",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Neo4jDriver.cs",
+              "RelativeDocumentMoniker": "Scripts\\Neo4jDriver.cs",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Neo4jDriver.cs",
+              "RelativeToolTip": "Scripts\\Neo4jDriver.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAmwHAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T15:37:39.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginRegisterWindow.xaml.cs",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\LoginRegisterWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Scripts\\LoginRegisterWindow.xaml.cs",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\LoginRegisterWindow.xaml.cs",
+              "RelativeToolTip": "Scripts\\LoginRegisterWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T02:03:52.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginRegisterWindow.xaml",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\LoginRegisterWindow.xaml",
+              "RelativeDocumentMoniker": "LoginRegisterWindow.xaml",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\LoginRegisterWindow.xaml",
+              "RelativeToolTip": "LoginRegisterWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-22T01:59:24.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Scripts\\MainWindow.xaml.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\MainWindow.xaml.cs",
               "RelativeToolTip": "Scripts\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-21T19:30:21.56Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Neo4jDriver.cs",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Neo4jDriver.cs",
-              "RelativeDocumentMoniker": "Scripts\\Neo4jDriver.cs",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Neo4jDriver.cs",
-              "RelativeToolTip": "Scripts\\Neo4jDriver.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T19:42:14.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.xaml",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-07T18:17:22.78Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InstallWindow.xaml",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\InstallWindow.xaml",
-              "RelativeDocumentMoniker": "InstallWindow.xaml",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\InstallWindow.xaml",
-              "RelativeToolTip": "InstallWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-07T00:10:24.942Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InstallWindow.xaml.cs",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\InstallWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Scripts\\InstallWindow.xaml.cs",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\InstallWindow.xaml.cs",
-              "RelativeToolTip": "Scripts\\InstallWindow.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAC8AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T23:27:13.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\App.xaml.cs",
               "RelativeDocumentMoniker": "Scripts\\App.xaml.cs",
@@ -109,7 +127,8 @@
               "RelativeToolTip": "Scripts\\App.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T22:58:23.025Z"
+              "WhenOpened": "2026-02-04T22:58:23.025Z",
+              "EditorCaption": ""
             }
           ]
         }

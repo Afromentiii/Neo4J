@@ -50,7 +50,7 @@ namespace Neo4J
                 BtnInstall.IsEnabled = false;
                 await Neo4jDriver.Instance.Initialize(connectionUrl, userName, password);
 
-                ((App)Application.Current).ShowWindow(new MainWindow());
+                ((App)Application.Current).ShowWindow(new LoginRegisterWindow());
                 ((App)Application.Current).CloseWindow(this);
             }
             catch (Exception ex)

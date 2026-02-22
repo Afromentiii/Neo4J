@@ -98,7 +98,7 @@
                            FontWeight="SemiBold"/>
 
                 <TextBox x:Name="TxtUrl"
-                         Text="bolt://localhost:7687"
+                         Text="neo4j+s://f17a21dd.databases.neo4j.io"
                          Height="35"
                          Padding="8,5"
                          VerticalContentAlignment="Center"
@@ -123,6 +123,7 @@
                              Height="35"
                              Padding="8,5"
                              VerticalContentAlignment="Center"
+                             Password="EqRkf-SkcvVFAxctAGeD1dS4s6_t1-5Hsn0zhTYvEmw"
                              Style="{StaticResource CommonHoverEffect}"/>
 
                 <Button x:Name="BtnInstall"
