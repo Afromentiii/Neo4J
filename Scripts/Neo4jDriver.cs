@@ -1,6 +1,7 @@
 ﻿using Neo4j.Driver;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Neo4J
 {
@@ -104,6 +105,112 @@ namespace Neo4J
                 }
             }
             return null;
+        }
+
+        public async Task<List<object>> GetMovies()
+        {
+            string query = @"MATCH (m:Movie) 
+                                 RETURN m.title AS title, 
+                                        m.genre AS genre, 
+                                        m.released AS released,
+                                        m.poster AS poster";
+
+            var movies = new List<object>();
+            await using var session = Driver.AsyncSession();
+
+            try
+            {
+                var result = await session.ExecuteReadAsync(async tx =>
+                {
+                    var cursor = await tx.RunAsync(query);
+                    return await cursor.ToListAsync();
+                });
+
+                foreach (var record in result)
+                {
+                    movies.Add(new
+                    {
+                        Title = record["title"].As<string>(),
+                        Genre = record["genre"].As<string>(),
+                        Released = record["released"].As<int>(),
+                        PosterUrl = record.Values.ContainsKey("poster") && record["poster"] != null
+                                    ? record["poster"].As<string>()
+                                    : "https://via.placeholder.com/220x340?text=No+Image",
+                        DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during downloading movies!: {ex.Message}");
+            }
+
+            return movies;
+        }
+
+        public async Task <bool> CreateLikeMovieRelation(string username, string movieTitle)
+        {
+            var query = @"
+            MATCH (u:User { username: $username }), 
+                  (m:Movie { title: $movieTitle })
+            MERGE (u)-[:LIKED]->(m)
+            RETURN u, m";
+            await using var session = Driver.AsyncSession();
+
+            var result = await session.RunAsync(query, new { username, movieTitle });
+            var record = await result.SingleOrDefaultAsync();
+
+            if (record != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<HashSet<string>> GetLikedMovieTitles(string username)
+        {
+            var likedTitles = new HashSet<string>();
+            var query = @"
+            MATCH (u:User {username: $username})-[:LIKED]->(m:Movie)
+            RETURN m.title AS Title";
+
+            await using var session = Driver.AsyncSession();
+            var result = await session.RunAsync(query, new { username });
+
+            await result.ForEachAsync(record =>
+            {
+                likedTitles.Add(record["Title"].As<string>());
+            });
+
+            return likedTitles;
+        }
+
+        public async Task<bool> RemoveLikeMovieRelation(string username, string movieTitle)
+        {
+           var query = @"
+            MATCH (u:User { username: $username })-[r:LIKED]->(m:Movie { title: $movieTitle })
+            DELETE r
+            RETURN count(r) AS deletedCount";
+
+            await using var session = Driver.AsyncSession();
+
+            try
+            {
+                var result = await session.RunAsync(query, new { username, movieTitle });
+                var record = await result.SingleOrDefaultAsync();
+
+                if (record != null && record["deletedCount"].As<int>() > 0)
+                {
+                    //MessageBox.Show(record["deletedCount"].ToString());
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during removing liked relation: {ex.Message}");
+            }
+
+            return false;
         }
         public void Dispose()
         {

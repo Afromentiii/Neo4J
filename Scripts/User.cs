@@ -6,19 +6,19 @@ namespace Neo4J
 {
     public class User
     {
-        string username;
-        string email;
-        string firstName;
-        string lastName;
-        string role;
+        public string Username { get; }
+        public string Email { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
+        public string Role { get; }
 
         public User(string username, string email, string firstName, string lastName, string role)
         {
-            this.username = username;
-            this.email = email;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.role = role;
+            Username = username;
+            Email = email;
+            FirstName = firstName;
+            LastName = lastName;
+            Role = role;
         }
     }
 }

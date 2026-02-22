@@ -186,10 +186,10 @@
                     <TabItem x:Name="LoginBtn" Header="LOGIN">
                         <StackPanel Margin="30,10">
                             <TextBlock Text="Username" Margin="5,0,0,5" FontWeight="SemiBold" Foreground="#444"/>
-                            <TextBox x:Name="LoginUsername" Height="42" Style="{StaticResource ModernInputStyle}"/>
+                            <TextBox Text="jakub" x:Name="LoginUsername" Height="42" Style="{StaticResource ModernInputStyle}"/>
 
                             <TextBlock Text="Password" Margin="5,15,0,5" FontWeight="SemiBold" Foreground="#444"/>
-                            <PasswordBox x:Name="LoginPassword" Height="42" Style="{StaticResource ModernInputStyle}"/>
+                            <PasswordBox Password="meran123" x:Name="LoginPassword" Height="42" Style="{StaticResource ModernInputStyle}"/>
 
                             <Button Content="Log In"
                                     Height="50"
