@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using Windows.System;
 
 namespace Neo4J
 {
@@ -107,7 +108,7 @@ namespace Neo4J
             return null;
         }
 
-        public async Task<List<object>> GetMovies()
+        public async Task<List<Movie>> GetMovies()
         {
             string query = @"MATCH (m:Movie) 
                                  RETURN m.title AS title, 
@@ -115,7 +116,7 @@ namespace Neo4J
                                         m.released AS released,
                                         m.poster AS poster";
 
-            var movies = new List<object>();
+            var movies = new List<Movie>();
             await using var session = Driver.AsyncSession();
 
             try
@@ -128,14 +129,14 @@ namespace Neo4J
 
                 foreach (var record in result)
                 {
-                    movies.Add(new
+                    movies.Add(new Movie
                     {
                         Title = record["title"].As<string>(),
                         Genre = record["genre"].As<string>(),
                         Released = record["released"].As<int>(),
                         PosterUrl = record.Values.ContainsKey("poster") && record["poster"] != null
                                     ? record["poster"].As<string>()
-                                    : "https://via.placeholder.com/220x340?text=No+Image",
+                                    : "",
                         DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}"
                     });
                 }
@@ -167,6 +168,26 @@ namespace Neo4J
             return false;
         }
 
+        public async Task<bool> CreateObservesRelation(string currentUserUsername, string targetUsername)
+        {
+            var query = @"
+            MATCH (u:User { username: $currentUserUsername }), 
+                  (t:User { username: $targetUsername })
+            MERGE (u)-[:OBSERVES]->(t)
+            RETURN u, t";
+
+            await using var session = Driver.AsyncSession();
+
+            var result = await session.RunAsync(query, new { currentUserUsername, targetUsername });
+            var record = await result.SingleOrDefaultAsync();
+
+            if (record != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public async Task<HashSet<string>> GetLikedMovieTitles(string username)
         {
             var likedTitles = new HashSet<string>();
@@ -187,10 +208,9 @@ namespace Neo4J
 
         public async Task<bool> RemoveLikeMovieRelation(string username, string movieTitle)
         {
-           var query = @"
-            MATCH (u:User { username: $username })-[r:LIKED]->(m:Movie { title: $movieTitle })
-            DELETE r
-            RETURN count(r) AS deletedCount";
+           var query = @"MATCH (u:User { username: $username })-[r:LIKED]->(m:Movie { title: $movieTitle })
+                        DELETE r
+                        RETURN count(r) AS deletedCount";
 
             await using var session = Driver.AsyncSession();
 
@@ -208,6 +228,81 @@ namespace Neo4J
             catch (Exception ex)
             {
                 MessageBox.Show($"Error during removing liked relation: {ex.Message}");
+            }
+
+            return false;
+        }
+
+        public async Task<List<object>> GetUsers()
+        {
+            string query = @"MATCH (u:User) 
+                             RETURN u.username AS username";
+
+            var usernames = new List<object>();
+            await using var session = Driver.AsyncSession();
+
+            try
+            {
+                var result = await session.ExecuteReadAsync(async tx =>
+                {
+                    var cursor = await tx.RunAsync(query);
+                    return await cursor.ToListAsync();
+                });
+
+                foreach (var record in result)
+                {
+                    usernames.Add(new
+                    {
+                        Username = record["username"].As<string>()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during downloading users: {ex.Message}");
+            }
+
+            return usernames;
+        }
+        public async Task<HashSet<string>> GetFollowedUsers(string username)
+        {
+            var followedUsers = new HashSet<string>();
+            var query = @"
+            MATCH (u:User {username: $username})-[:OBSERVES]->(f:User)
+            RETURN f.username AS FollowedUsername";
+
+            await using var session = Driver.AsyncSession();
+            var result = await session.RunAsync(query, new { username });
+
+            await result.ForEachAsync(record =>
+            {
+                followedUsers.Add(record["FollowedUsername"].As<string>());
+            });
+
+            return followedUsers;
+        }
+        public async Task<bool> RemoveObservesRelation(string followerUsername, string followedUsername)
+        {
+            var query = @"
+            MATCH (follower:User { username: $followerUsername })-[r:OBSERVES]->(followed:User { username: $followedUsername })
+            DELETE r
+            RETURN count(r) AS deletedCount";
+
+            await using var session = Driver.AsyncSession();
+
+            try
+            {
+                var result = await session.RunAsync(query, new { followerUsername, followedUsername });
+                var record = await result.SingleOrDefaultAsync();
+
+                if (record != null && record["deletedCount"].As<int>() > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during removing OBSERVES relation: {ex.Message}");
             }
 
             return false;

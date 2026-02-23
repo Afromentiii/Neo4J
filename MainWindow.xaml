@@ -15,7 +15,6 @@
     </Window.Background>
 
     <Window.Resources>
-
         <SolidColorBrush x:Key="CardBackground" Color="White"/>
         <SolidColorBrush x:Key="Accent" Color="#E50914"/>
         <SolidColorBrush x:Key="LikeGreen" Color="#2ECC71"/>
@@ -49,7 +48,6 @@
             </Setter>
         </Style>
 
-        <!-- KARTA FILMU -->
         <Style x:Key="MovieCard" TargetType="Border">
             <Setter Property="Background" Value="{StaticResource CardBackground}"/>
             <Setter Property="CornerRadius" Value="15"/>
@@ -90,13 +88,12 @@
             </Style.Triggers>
         </Style>
 
-        <!-- PRZYCISKI -->
         <Style x:Key="ActionButton" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -108,7 +105,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
 
     <Grid>
@@ -133,11 +129,20 @@
                                VerticalAlignment="Center" FontWeight="SemiBold" FontSize="16"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                    <TextBlock Text="Neo4J" Foreground="{StaticResource Accent}"
-                               FontWeight="Black" FontSize="24" HorizontalAlignment="Right"/>
-                    <TextBlock Text="MOVIE EXPLORER" Foreground="{StaticResource TextSecondary}"
-                               FontSize="10" FontWeight="Bold" HorizontalAlignment="Right"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,20,0">
+                        <TextBlock Text="Neo4J" Foreground="{StaticResource Accent}"
+                                   FontWeight="Black" FontSize="24" HorizontalAlignment="Right"/>
+                        <TextBlock Text="MOVIE EXPLORER" Foreground="{StaticResource TextSecondary}"
+                                   FontSize="10" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    </StackPanel>
+
+                    <Button Content="Logout" 
+                            Width="80" 
+                            Height="35" 
+                            Background="Gray" 
+                            Style="{StaticResource ActionButton}"
+                            Click="LogoutButton_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -152,17 +157,9 @@
             <TextBlock Text="Movie list" FontSize="20" FontWeight="Bold" 
                        Margin="45,0,0,10" Foreground="{StaticResource Accent}"/>
 
-            <Border Grid.Row="1"
-                    Height="4"
-                    Margin="45,0,45,10"
-                    Background="White"
-                    CornerRadius="2"/>
+            <Border Grid.Row="1" Height="4" Margin="45,0,45,10" Background="White" CornerRadius="2"/>
 
-            <ScrollViewer Grid.Row="2"
-                          HorizontalScrollBarVisibility="Auto"
-                          VerticalScrollBarVisibility="Disabled"
-                          Padding="30,10">
-
+            <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10">
                 <ScrollViewer.Resources>
                     <Style TargetType="ScrollBar" BasedOn="{StaticResource BlackScrollBar}"/>
                 </ScrollViewer.Resources>
@@ -183,42 +180,23 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Border Grid.Row="0" CornerRadius="15,15,0,0"
-                                            ClipToBounds="True" Background="#F5F5F5">
+                                    <Border Grid.Row="0" CornerRadius="15,15,0,0" ClipToBounds="True" Background="#F5F5F5">
                                         <Grid>
-                                            <TextBlock Text="🎬" FontSize="40"
-                                                       HorizontalAlignment="Center"
-                                                       VerticalAlignment="Center" Opacity="0.2"/>
-                                            <Image Source="{Binding PosterUrl}"
-                                                   Stretch="UniformToFill"
-                                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                                            <TextBlock Text="🎬" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.2"/>
+                                            <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         </Grid>
                                     </Border>
 
                                     <StackPanel Grid.Row="1" Margin="15,10">
-                                        <TextBlock Text="{Binding Title}"
-                                                   Foreground="{StaticResource TextPrimary}"
-                                                   FontWeight="Bold" FontSize="15"
-                                                   Height="45" TextWrapping="Wrap"/>
-                                        <TextBlock Text="{Binding DisplayInfo}"
-                                                   Foreground="{StaticResource TextSecondary}"
-                                                   FontSize="11" Margin="0,0,0,10"/>
-
+                                        <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextPrimary}" FontWeight="Bold" FontSize="15" Height="45" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding DisplayInfo}" Foreground="{StaticResource TextSecondary}" FontSize="11" Margin="0,0,0,10"/>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Button x:Name="LikeButton" Grid.Column="0" Content="👍"
-                                                    Background="Gray"
-                                                    Style="{StaticResource ActionButton}"
-                                                    Margin="0,0,5,0" Height="35"
-                                                    Click="LikeButton_Click"/>
-                                            <Button x:Name="DisLikeButton" Grid.Column="1" Content="👎"
-                                                    Background="Gray"
-                                                    Style="{StaticResource ActionButton}"
-                                                    Margin="5,0,0,0" Height="35"
-                                                    Click="DisLikeButton_Click"/>
+                                            <Button x:Name="LikeButton" Content="👍" Background="Gray" Style="{StaticResource ActionButton}" Margin="0,0,5,0" Height="35" Click="LikeButton_Click"/>
+                                            <Button x:Name="DisLikeButton" Grid.Column="1" Content="👎" Background="Gray" Style="{StaticResource ActionButton}" Margin="5,0,0,0" Height="35" Click="DisLikeButton_Click"/>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
@@ -229,6 +207,53 @@
             </ScrollViewer>
         </Grid>
 
-        <Grid Grid.Row="2"/>
+        <Grid Grid.Row="2" Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="4"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="User list" FontSize="20" FontWeight="Bold" 
+                       Margin="45,0,0,10" Foreground="{StaticResource Accent}"/>
+
+            <Border Grid.Row="1" Height="4" Margin="45,0,45,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
+
+            <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10">
+                <ScrollViewer.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource BlackScrollBar}"/>
+                </ScrollViewer.Resources>
+
+                <ItemsControl x:Name="UsersList">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource MovieCard}" Height="160" Width="180">
+                                <StackPanel VerticalAlignment="Center">
+                                    <Ellipse Width="50" Height="50" Fill="#DDD" Margin="0,0,0,10"/>
+                                    <TextBlock Text="{Binding Username}" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                                    <!-- Grid dla przycisków -->
+                                    <Grid Margin="0,5,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button x:Name="FollowButton" Content="Follow" Background="Gray" Style="{StaticResource ActionButton}" Height="30" Grid.Column="0"  Width="70" Click="FollowButton_Click"/>
+                                        <Button x:Name="UnfollowButton" Content="Unfollow" Background="Gray" Style="{StaticResource ActionButton}" Height="30" Grid.Column="1"  Width="70" Click="UnFollowButton_Click"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

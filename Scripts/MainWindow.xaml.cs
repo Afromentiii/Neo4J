@@ -14,24 +14,33 @@ namespace Neo4J
     public partial class MainWindow : Window
     {
         private User currentUser;
-        private List<object> movies;
+        private List<Movie> movies;
+        private List<object> users;
         public MainWindow(User user)
         {
             InitializeComponent();
             currentUser = user;
             initUserXAML();
-            initMovies();
+            initMoviesRefresh();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e) 
+        {
+            ((App)Application.Current).ShowWindow(new LoginRegisterWindow());
+            ((App)Application.Current).CloseWindow(this);
         }
         private async void LikeButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not Button likeButton) return;
 
-            var button = sender as Button;
             dynamic movie = likeButton.DataContext;
             string movieTitle = movie.Title;
             bool liked = await Neo4jDriver.Instance.CreateLikeMovieRelation(currentUser.Username, movieTitle);
 
-            likeButton.Background = (Brush)FindResource("LikeGreen");
+            if (liked)
+            {
+                likeButton.Background = (Brush)FindResource("LikeGreen");
+            }
 
         }
 
@@ -56,20 +65,71 @@ namespace Neo4J
                 }
             }
         }
+
+        private async void FollowButton_Click(object sender, RoutedEventArgs e) 
+        {
+            if (sender is not Button followButton) return;
+
+            dynamic userField = followButton.DataContext;
+            string username = userField.Username;
+            try
+            {
+                bool isTrue = await Neo4jDriver.Instance.CreateObservesRelation(currentUser.Username, username);
+                if (isTrue)
+                {
+                    followButton.Background = (Brush)FindResource("LikeGreen");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas obserwowania użytkownika: {ex.Message}");
+            }
+        }
+
+        private async void UnFollowButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button unfollowButton) return;
+
+            var parentGrid = VisualTreeHelper.GetParent(unfollowButton) as Grid;
+            var followButton = parentGrid?.FindName("FollowButton") as Button;
+
+            dynamic user = unfollowButton.DataContext;
+            string usernameToUnfollow = user.Username;
+
+            bool removed = await Neo4jDriver.Instance.RemoveObservesRelation(currentUser.Username, usernameToUnfollow);
+
+            if (removed)
+            {
+                if (followButton != null)
+                    followButton.Background = Brushes.Gray;
+            }
+        }
         public async void initUserXAML()
         {
             UserText.Text = "User: " + currentUser.Username;
         }
 
-        public async void initMovies()
+        public async void initMoviesRefresh()
         {
             var likedTitles = await Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username);
             movies = await Neo4jDriver.Instance.GetMovies();
+            users = await Neo4jDriver.Instance.GetUsers();
+
             MoviesList.ItemsSource = movies;
+            UsersList.ItemsSource = users;
 
             MoviesList.UpdateLayout();
+            UsersList.UpdateLayout();
 
-            await Dispatcher.BeginInvoke(new Action(() =>
+            await HighlightLikedMoviesAsync(likedTitles);
+            await InitUsersHighlight();
+        }
+
+        private async Task HighlightLikedMoviesAsync(HashSet<string> likedTitles)
+        {
+            if (MoviesList.Items.Count == 0) return;
+
+            await Dispatcher.InvokeAsync(() =>
             {
                 foreach (var item in MoviesList.Items)
                 {
@@ -89,7 +149,30 @@ namespace Neo4J
                         }
                     }
                 }
-            }), System.Windows.Threading.DispatcherPriority.Background);
+            }, System.Windows.Threading.DispatcherPriority.Background);
+        }
+
+        public async Task InitUsersHighlight()
+        {
+            var followedUsers = await Neo4jDriver.Instance.GetFollowedUsers(currentUser.Username);
+
+            foreach (var item in UsersList.Items)
+            {
+                var container = UsersList.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
+                if (container == null) continue;
+
+                var followButton = FindChild<Button>(container, "FollowButton");
+                if (followButton != null)
+                {
+                    var usernameProp = item.GetType().GetProperty("Username");
+                    string username = usernameProp?.GetValue(item)?.ToString();
+
+                    if (username != null && followedUsers.Contains(username))
+                    {
+                        followButton.Background = (Brush)FindResource("LikeGreen");
+                    }
+                }
+            }
         }
         private T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
         {
