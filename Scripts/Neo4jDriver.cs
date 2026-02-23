@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using Windows.System;
 
 namespace Neo4J
@@ -129,14 +130,13 @@ namespace Neo4J
 
                 foreach (var record in result)
                 {
+                    var title = record["title"].As<string>();
                     movies.Add(new Movie
                     {
                         Title = record["title"].As<string>(),
                         Genre = record["genre"].As<string>(),
                         Released = record["released"].As<int>(),
-                        PosterUrl = record.Values.ContainsKey("poster") && record["poster"] != null
-                                    ? record["poster"].As<string>()
-                                    : "",
+                        PosterUrl = $"/Posters/{title}.jpg",
                         DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}"
                     });
                 }
@@ -148,7 +148,6 @@ namespace Neo4J
 
             return movies;
         }
-
         public async Task <bool> CreateLikeMovieRelation(string username, string movieTitle)
         {
             var query = @"
@@ -233,10 +232,12 @@ namespace Neo4J
             return false;
         }
 
-        public async Task<List<object>> GetUsers()
+        public async Task<List<object>> GetUsers(string currentUser)
         {
-            string query = @"MATCH (u:User) 
-                             RETURN u.username AS username";
+            string query = @"
+                    MATCH (u:User)
+                    WHERE u.username <> $currentUser
+                    RETURN u.username AS username";
 
             var usernames = new List<object>();
             await using var session = Driver.AsyncSession();
@@ -245,7 +246,7 @@ namespace Neo4J
             {
                 var result = await session.ExecuteReadAsync(async tx =>
                 {
-                    var cursor = await tx.RunAsync(query);
+                    var cursor = await tx.RunAsync(query, new { currentUser });
                     return await cursor.ToListAsync();
                 });
 
@@ -306,6 +307,86 @@ namespace Neo4J
             }
 
             return false;
+        }
+
+        public async Task<List<Movie>> RecommendMoviesForUser(string username, int limit = 10)
+        {
+            var movies = new List<Movie>();
+
+            var query = @"
+            MATCH (u:User {username: $username})-[:OBSERVES]->(f:User)-[:LIKED]->(m:Movie)
+            WHERE NOT (u)-[:LIKED]->(m)
+            RETURN m.title AS title, m.genre AS genre, m.released AS released, m.poster AS poster,
+                   count(*) AS score
+            ORDER BY score DESC
+            LIMIT $limit";
+
+            await using var session = Driver.AsyncSession();
+
+            var result = await session.ExecuteReadAsync(async tx =>
+            {
+                var cursor = await tx.RunAsync(query, new { username, limit });
+                return await cursor.ToListAsync();
+            });
+
+            foreach (var record in result)
+            {
+                var title = record["title"].As<string>();
+                var score = record["score"].As<int>();
+                movies.Add(new Movie
+                {
+                    Title = record["title"].As<string>(),
+                    Genre = record["genre"].As<string>(),
+                    Released = record["released"].As<int>(),
+                    PosterUrl = $"/Posters/{title}.jpg",
+                    DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}",
+                    RecommendationInfo = $"Recommended by {score} people"
+                });
+            }
+            return movies;
+        }
+
+        public async Task<List<Movie>> RecommendMoviesByGenre(string username, int limit = 10)
+        {
+            var movies = new List<Movie>();
+
+            var query = @"
+            MATCH (u:User {username: $username})-[:LIKED]->(:Movie)-[:IN_GENRE]->(g:Genre)
+            MATCH (g)<-[:IN_GENRE]-(m:Movie)
+            WHERE NOT (u)-[:LIKED]->(m)
+            RETURN m.title AS title,
+                   m.genre AS genre,
+                   m.released AS released,
+                   m.poster AS poster,
+                   count(*) AS score
+            ORDER BY score DESC
+            LIMIT $limit";
+
+            await using var session = Driver.AsyncSession();
+
+            var result = await session.ExecuteReadAsync(async tx =>
+            {
+                var cursor = await tx.RunAsync(query, new { username, limit });
+                return await cursor.ToListAsync();
+            });
+
+            foreach (var record in result)
+            {
+                var title = record["title"].As<string>();
+                var score = record["score"].As<int>();
+
+                movies.Add(new Movie
+                {
+                    Title = title,
+                    Genre = record["genre"].As<string>(),
+                    Released = record["released"].As<int>(),
+                    PosterUrl = $"/Posters/{title}.jpg",
+                    DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}",
+                    RecommendationInfo = $"Popular in your genres {score}"
+                });
+            }
+
+            return movies;
         }
         public void Dispose()
         {

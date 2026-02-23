@@ -20,10 +20,28 @@ namespace Neo4J
         {
             InitializeComponent();
             currentUser = user;
-            initUserXAML();
-            initMoviesRefresh();
+            InitUserXAML();
+            InitMoviesRefresh();
+        }
+        private async void ShowRecommendedMoviesButton_Click(object sender, RoutedEventArgs e) 
+        {
+            if(sender is not Button) return;
+
+            var recommendedMovies = new List<Movie>();
+            recommendedMovies = await Neo4jDriver.Instance.RecommendMoviesForUser(currentUser.Username, 10);
+
+            RecommendedMoviesList.ItemsSource = recommendedMovies;
         }
 
+        private async void ShowRecommendedByGenreButton_Click(object sender, RoutedEventArgs e) 
+        {
+            if (sender is not Button) return;
+
+            var recommendedMovies = new List<Movie>();
+            recommendedMovies = await Neo4jDriver.Instance.RecommendMoviesByGenre(currentUser.Username);
+
+            RecommendedByGenreList.ItemsSource = recommendedMovies;
+        }
         private void LogoutButton_Click(object sender, RoutedEventArgs e) 
         {
             ((App)Application.Current).ShowWindow(new LoginRegisterWindow());
@@ -104,16 +122,16 @@ namespace Neo4J
                     followButton.Background = Brushes.Gray;
             }
         }
-        public async void initUserXAML()
+        public async void InitUserXAML()
         {
             UserText.Text = "User: " + currentUser.Username;
         }
 
-        public async void initMoviesRefresh()
+        public async Task InitMoviesRefresh()
         {
             var likedTitles = await Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username);
             movies = await Neo4jDriver.Instance.GetMovies();
-            users = await Neo4jDriver.Instance.GetUsers();
+            users = await Neo4jDriver.Instance.GetUsers(currentUser.Username);
 
             MoviesList.ItemsSource = movies;
             UsersList.ItemsSource = users;

@@ -3,36 +3,55 @@
   "WorkspaceRootPath": "E:\\Visual\\Neo4JGIT\\Neo4J\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\movieimportquery.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:movieimportquery.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\neo4j.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:neo4j.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\simplescriptdownloadingposters.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:simplescriptdownloadingposters.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\loginregisterwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\loginregisterwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\afrom\\Desktop\\Nowy folder\\simpleScriptDownloadingPosters.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\posters\\avengers endgame.jpg||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:posters\\avengers endgame.jpg||{58961B49-13E0-48C0-9258-13CBC4D40279}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\installwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -43,20 +62,12 @@
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\scripts\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:scripts\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,36 +77,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "Neo4J",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Neo4J.csproj",
+              "RelativeDocumentMoniker": "Neo4J.csproj",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Neo4J.csproj",
+              "RelativeToolTip": "Neo4J.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-24T13:54:09.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "simpleScriptDownloadingPosters.py",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\simpleScriptDownloadingPosters.py",
+              "RelativeDocumentMoniker": "simpleScriptDownloadingPosters.py",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\simpleScriptDownloadingPosters.py",
+              "RelativeToolTip": "simpleScriptDownloadingPosters.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
+              "WhenOpened": "2026-02-23T21:16:12.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Avengers Endgame.jpg",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Posters\\Avengers Endgame.jpg",
+              "RelativeDocumentMoniker": "Posters\\Avengers Endgame.jpg",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Posters\\Avengers Endgame.jpg",
+              "RelativeToolTip": "Posters\\Avengers Endgame.jpg",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-02-23T16:46:02.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Movie.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Movie.cs",
               "RelativeDocumentMoniker": "Scripts\\Movie.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Movie.cs",
               "RelativeToolTip": "Scripts\\Movie.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T15:33:42.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-23T15:33:42.051Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "App.xaml",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-22T20:44:55.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 5,
               "Title": "LoginRegisterWindow.xaml",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\LoginRegisterWindow.xaml",
               "RelativeDocumentMoniker": "LoginRegisterWindow.xaml",
@@ -106,19 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "Scripts\\AssemblyInfo.cs",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\AssemblyInfo.cs",
-              "RelativeToolTip": "Scripts\\AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-22T18:28:27.817Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "MovieImportQuery.txt",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\MovieImportQuery.txt",
               "RelativeDocumentMoniker": "MovieImportQuery.txt",
@@ -131,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "InstallWindow.xaml",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\InstallWindow.xaml",
               "RelativeDocumentMoniker": "InstallWindow.xaml",
@@ -142,76 +163,73 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-22T17:26:54.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-22T17:26:54.692Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "User.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\User.cs",
               "RelativeDocumentMoniker": "Scripts\\User.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\User.cs",
               "RelativeToolTip": "Scripts\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-22T16:03:47.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-22T16:03:47.235Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "InstallWindow.xaml.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\InstallWindow.xaml.cs",
               "RelativeDocumentMoniker": "Scripts\\InstallWindow.xaml.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\InstallWindow.xaml.cs",
               "RelativeToolTip": "Scripts\\InstallWindow.xaml.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAADQAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-22T15:40:51.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-22T15:40:51.218Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Neo4jDriver.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Neo4jDriver.cs",
               "RelativeDocumentMoniker": "Scripts\\Neo4jDriver.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\Neo4jDriver.cs",
               "RelativeToolTip": "Scripts\\Neo4jDriver.cs",
-              "ViewState": "AgIAAAsBAAAAAAAAAAAqwCcBAABBAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAcwFgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-22T15:37:39.976Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "LoginRegisterWindow.xaml.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\LoginRegisterWindow.xaml.cs",
               "RelativeDocumentMoniker": "Scripts\\LoginRegisterWindow.xaml.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\LoginRegisterWindow.xaml.cs",
               "RelativeToolTip": "Scripts\\LoginRegisterWindow.xaml.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACgAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-22T02:03:52.161Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Scripts\\MainWindow.xaml.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\MainWindow.xaml.cs",
               "RelativeToolTip": "Scripts\\MainWindow.xaml.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAiwGUAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAowIUAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-21T19:30:21.56Z",
               "EditorCaption": ""
@@ -219,6 +237,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "simpleScriptDownloadingPosters.py",
+              "DocumentMoniker": "C:\\Users\\afrom\\Desktop\\Nowy folder\\simpleScriptDownloadingPosters.py",
+              "ToolTip": "C:\\Users\\afrom\\Desktop\\Nowy folder\\simpleScriptDownloadingPosters.py",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
+              "WhenOpened": "2026-02-23T17:48:33.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-22T20:44:55.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "App.config",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -230,7 +269,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Scripts\\App.xaml.cs",
               "RelativeDocumentMoniker": "Scripts\\App.xaml.cs",

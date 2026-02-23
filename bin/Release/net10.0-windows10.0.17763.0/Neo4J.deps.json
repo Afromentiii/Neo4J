@@ -1,0 +1,91 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Neo4J/1.0.0": {
+        "dependencies": {
+          "BCrypt": "1.0.0",
+          "BCrypt.Net-Next": "4.1.0",
+          "Neo4j.Driver": "6.0.0",
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.17763.57"
+        },
+        "runtime": {
+          "Neo4J.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.57": {
+        "runtime": {
+          "Microsoft.Windows.SDK.NET.dll": {
+            "assemblyVersion": "10.0.17763.38",
+            "fileVersion": "10.0.17763.55"
+          },
+          "WinRT.Runtime.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.48161"
+          }
+        }
+      },
+      "BCrypt/1.0.0": {
+        "runtime": {
+          "lib/DevOne.Security.Cryptography.BCrypt.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "BCrypt.Net-Next/4.1.0": {
+        "runtime": {
+          "lib/net10.0/BCrypt.Net-Next.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "Neo4j.Driver/6.0.0": {
+        "runtime": {
+          "lib/net10.0/Neo4j.Driver.dll": {
+            "assemblyVersion": "6.0.4.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Neo4J/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.57": {
+      "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BCrypt/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/ibwe2Sg7MJR26IrEzW2Rde9/+A+AYXB5Kf9w/8BVLDdzSfUe4W2M7i2efy1Wa9wHh1k0y81Q6h9Ty8C6IrUGA==",
+      "path": "bcrypt/1.0.0",
+      "hashPath": "bcrypt.1.0.0.nupkg.sha512"
+    },
+    "BCrypt.Net-Next/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5YT3DKllmtkyW68PjURu/V1TOe4MKiByKwsRNVcfYE1S5KuFTeozdmKzyNzolKiQF391OXCaQtINvYT3j1ERzQ==",
+      "path": "bcrypt.net-next/4.1.0",
+      "hashPath": "bcrypt.net-next.4.1.0.nupkg.sha512"
+    },
+    "Neo4j.Driver/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ejoXojkPz9qf4lSpFm3JACKHd8oQLWrQGYGC/dnHAcEqe76NIL/PbjLCbQq3dsDEAdUH/CuVe7wl0E5JuY3H2g==",
+      "path": "neo4j.driver/6.0.0",
+      "hashPath": "neo4j.driver.6.0.0.nupkg.sha512"
+    }
+  }
+}

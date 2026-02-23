@@ -9,6 +9,67 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Posters\2001 A Space Odyssey.jpg" />
+    <None Remove="Posters\Ant-Man and the Wasp.jpg" />
+    <None Remove="Posters\Ant-Man.jpg" />
+    <None Remove="Posters\Apocalypse Now.jpg" />
+    <None Remove="Posters\Avengers Age of Ultron.jpg" />
+    <None Remove="Posters\Avengers Endgame.jpg" />
+    <None Remove="Posters\Avengers Infinity War.jpg" />
+    <None Remove="Posters\Black Panther Wakanda Forever.jpg" />
+    <None Remove="Posters\Black Panther.jpg" />
+    <None Remove="Posters\Black Widow.jpg" />
+    <None Remove="Posters\Captain America Civil War.jpg" />
+    <None Remove="Posters\Captain America The First Avenger.jpg" />
+    <None Remove="Posters\Captain America The Winter Soldier.jpg" />
+    <None Remove="Posters\Captain Marvel.jpg" />
+    <None Remove="Posters\Doctor Strange in the Multiverse of Madness.jpg" />
+    <None Remove="Posters\Doctor Strange.jpg" />
+    <None Remove="Posters\Fight Club.jpg" />
+    <None Remove="Posters\Forrest Gump.jpg" />
+    <None Remove="Posters\Gladiator.jpg" />
+    <None Remove="Posters\Guardians of the Galaxy Vol. 2.jpg" />
+    <None Remove="Posters\Guardians of the Galaxy.jpg" />
+    <None Remove="Posters\Iron Man 2.jpg" />
+    <None Remove="Posters\Iron Man.jpg" />
+    <None Remove="Posters\Jurassic Park.jpg" />
+    <None Remove="Posters\Psycho.jpg" />
+    <None Remove="Posters\Pulp Fiction.jpg" />
+    <None Remove="Posters\Rear Window.jpg" />
+    <None Remove="Posters\Saving Private Ryan.jpg" />
+    <None Remove="Posters\Shang-Chi and the Legend of the Ten Rings.jpg" />
+    <None Remove="Posters\Spider-Man Far From Home.jpg" />
+    <None Remove="Posters\Spider-Man Homecoming.jpg" />
+    <None Remove="Posters\Spider-Man No Way Home.jpg" />
+    <None Remove="Posters\Star Wars.jpg" />
+    <None Remove="Posters\The Avengers.jpg" />
+    <None Remove="Posters\The Incredible Hulk.jpg" />
+    <None Remove="Posters\The Shawshank Redemption.jpg" />
+    <None Remove="Posters\The Silence of the Lambs.jpg" />
+    <None Remove="Posters\Thor Love and Thunder.jpg" />
+    <None Remove="Posters\Thor Ragnarok.jpg" />
+    <None Remove="Posters\Thor The Dark World.jpg" />
+    <None Remove="Posters\Thor.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Posters\2001 A Space Odyssey.jpg" />
+    <Resource Include="Posters\Captain America Civil War.jpg" />
+    <Resource Include="Posters\Jurassic Park.jpg" />
+    <Resource Include="Posters\Rear Window.jpg" />
+    <Resource Include="Posters\Saving Private Ryan.jpg" />
+    <Resource Include="Posters\The Silence of the Lambs.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Posters\Gladiator.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Posters\Captain Marvel.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt" Version="1.0.0" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
     <PackageReference Include="Neo4j.Driver" Version="6.0.0" />
@@ -39,6 +100,42 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Posters\Ant-Man and the Wasp.jpg" />
+    <Resource Include="Posters\Ant-Man.jpg" />
+    <Resource Include="Posters\Apocalypse Now.jpg" />
+    <Resource Include="Posters\Avengers Age of Ultron.jpg" />
+    <Resource Include="Posters\Avengers Endgame.jpg" />
+    <Resource Include="Posters\Avengers Infinity War.jpg" />
+    <Resource Include="Posters\Black Panther Wakanda Forever.jpg" />
+    <Resource Include="Posters\Black Panther.jpg" />
+    <Resource Include="Posters\Black Widow.jpg" />
+    <Resource Include="Posters\Captain America The First Avenger.jpg" />
+    <Resource Include="Posters\Captain America The Winter Soldier.jpg" />
+    <Resource Include="Posters\Doctor Strange in the Multiverse of Madness.jpg" />
+    <Resource Include="Posters\Doctor Strange.jpg" />
+    <Resource Include="Posters\Fight Club.jpg" />
+    <Resource Include="Posters\Forrest Gump.jpg" />
+    <Resource Include="Posters\Guardians of the Galaxy Vol. 2.jpg" />
+    <Resource Include="Posters\Guardians of the Galaxy.jpg" />
+    <Resource Include="Posters\Iron Man 2.jpg" />
+    <Resource Include="Posters\Iron Man.jpg" />
+    <Resource Include="Posters\Psycho.jpg" />
+    <Resource Include="Posters\Pulp Fiction.jpg" />
+    <Resource Include="Posters\Shang-Chi and the Legend of the Ten Rings.jpg" />
+    <Resource Include="Posters\Spider-Man Far From Home.jpg" />
+    <Resource Include="Posters\Spider-Man Homecoming.jpg" />
+    <Resource Include="Posters\Spider-Man No Way Home.jpg" />
+    <Resource Include="Posters\Star Wars.jpg" />
+    <Resource Include="Posters\The Avengers.jpg" />
+    <Resource Include="Posters\The Incredible Hulk.jpg" />
+    <Resource Include="Posters\The Shawshank Redemption.jpg" />
+    <Resource Include="Posters\Thor Love and Thunder.jpg" />
+    <Resource Include="Posters\Thor Ragnarok.jpg" />
+    <Resource Include="Posters\Thor The Dark World.jpg" />
+    <Resource Include="Posters\Thor.jpg" />
   </ItemGroup>
 
 </Project>

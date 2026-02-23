@@ -10,6 +10,7 @@ namespace Neo4J
         public string Genre { get; set; }
         public int Released { get; set; }
         public string PosterUrl { get; set; }
-        public string DisplayInfo { get; set; }
-    }
+        public string DisplayInfo { get; set; }  
+        public string RecommendationInfo  { get; set; }
+}
 }
