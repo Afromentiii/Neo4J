@@ -1,0 +1,50 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio 2015/2017/2019/2022 cache/options directory
+.vs/
+/.idea/
+/.vscode/
+
+# Other
+*.bak
+*.cache
+*.log
+*.tmp
+*.temp
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Python (dla Twoich skryptów .py)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder Mac OS (jeśli z kimś współpracujesz)
+.DS_Store

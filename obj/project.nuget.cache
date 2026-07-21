@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dazIlE9lDHE=",
+  "dgSpecHash": "Ox4XWSSZ/yU=",
   "success": true,
   "projectFilePath": "E:\\Visual\\Neo4JGIT\\Neo4J\\Neo4J.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
       "filePath": "E:\\Visual\\Neo4JGIT\\Neo4J\\Neo4J.csproj",
       "libraryId": "BCrypt",
       "targetGraphs": [
-        "net10.0-windows10.0.17763"
+        "net10.0-windows10.0.17763.0"
       ]
     }
   ]
