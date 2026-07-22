@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Neo4J")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15dd4c8ee71fe059fd99c2a796990648c3d442dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a33475df9666be29a64e01083b5f70afde6d29ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("Neo4J")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Neo4J")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

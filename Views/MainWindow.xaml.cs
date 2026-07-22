@@ -102,11 +102,10 @@ namespace Neo4J.Views
             LoadingOverlay.Visibility = Visibility.Visible;
             MainContentScroll.Visibility = Visibility.Collapsed;
 
-            var tLiked = Task.Run(() => Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username));
-            var tMovies = Task.Run(() => Neo4jDriver.Instance.GetMovies());
-            var tUsers = Task.Run(() => Neo4jDriver.Instance.GetUsers(currentUser.Username));
+            var tLiked = Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username);
+            var tMovies = Neo4jDriver.Instance.GetMovies();
+            var tUsers = Neo4jDriver.Instance.GetUsers(currentUser.Username);
 
-            await Task.WhenAll(tLiked, tMovies, tUsers);
 
             var likedTitles = await tLiked;
             var movies = await tMovies;

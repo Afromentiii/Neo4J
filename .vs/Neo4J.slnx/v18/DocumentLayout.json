@@ -7,16 +7,12 @@
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\views\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:views\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\services\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:services\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\views\\installwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -38,7 +34,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "App.config",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -51,7 +47,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Movie.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Models\\Movie.cs",
               "RelativeDocumentMoniker": "Models\\Movie.cs",
@@ -60,17 +56,18 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-22T00:55:41Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Neo4jDriver.cs",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Services\\Neo4jDriver.cs",
               "RelativeDocumentMoniker": "Services\\Neo4jDriver.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Services\\Neo4jDriver.cs",
               "RelativeToolTip": "Services\\Neo4jDriver.cs",
-              "ViewState": "AgIAABkBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALwAAAAAAAAAAAAQwKgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-22T00:51:20.361Z",
               "EditorCaption": ""
@@ -83,34 +80,21 @@
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml.cs",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\MainWindow.xaml.cs",
               "RelativeToolTip": "Views\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAA6wGMAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAmwGwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-22T00:45:46.029Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginRegisterWindow.xaml",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\LoginRegisterWindow.xaml",
-              "RelativeDocumentMoniker": "Views\\LoginRegisterWindow.xaml",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\LoginRegisterWindow.xaml",
-              "RelativeToolTip": "Views\\LoginRegisterWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-07-22T00:23:50.275Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "InstallWindow.xaml",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\InstallWindow.xaml",
               "RelativeDocumentMoniker": "Views\\InstallWindow.xaml",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\InstallWindow.xaml",
               "RelativeToolTip": "Views\\InstallWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-07-22T00:23:43.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-22T00:23:43.32Z"
             }
           ]
         }

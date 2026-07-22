@@ -93,6 +93,12 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -102,6 +108,70 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="PreviewMouseDown">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="0.95" Duration="0:0:0.05"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="0.95" Duration="0:0:0.05"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="PreviewMouseUp">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.05"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.05"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PositiveMovieButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Background" Value="{StaticResource LikeGreen}"/>
+            <Setter Property="Opacity" Value="0.4"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsLiked}" Value="True">
+                    <Setter Property="Opacity" Value="1.0"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NegativeMovieButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Background" Value="{StaticResource DislikeRed}"/>
+            <Setter Property="Opacity" Value="0.4"/>
+        </Style>
+
+        <Style x:Key="PositiveUserButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Background" Value="{StaticResource LikeGreen}"/>
+            <Setter Property="Opacity" Value="0.4"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsFollowed}" Value="True">
+                    <Setter Property="Opacity" Value="1.0"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NegativeUserButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Background" Value="{StaticResource DislikeRed}"/>
+            <Setter Property="Opacity" Value="0.4"/>
         </Style>
     </Window.Resources>
 
@@ -194,19 +264,8 @@
                                                         <ColumnDefinition Width="*"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Button x:Name="LikeButton" Content="👍" Margin="0,0,5,0" Height="35" Click="LikeButton_Click">
-                                                        <Button.Style>
-                                                            <Style TargetType="Button" BasedOn="{StaticResource ActionButton}">
-                                                                <Setter Property="Background" Value="Gray"/>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding IsLiked}" Value="True">
-                                                                        <Setter Property="Background" Value="{StaticResource LikeGreen}"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Button.Style>
-                                                    </Button>
-                                                    <Button x:Name="DisLikeButton" Grid.Column="1" Content="👎" Background="Gray" Style="{StaticResource ActionButton}" Margin="5,0,0,0" Height="35" Click="DisLikeButton_Click"/>
+                                                    <Button x:Name="LikeButton" Content="👍" Margin="0,0,5,0" Height="35" Style="{StaticResource PositiveMovieButtonStyle}" Click="LikeButton_Click"/>
+                                                    <Button x:Name="DisLikeButton" Grid.Column="1" Content="👎" Style="{StaticResource NegativeMovieButtonStyle}" Margin="5,0,0,0" Height="35" Click="DisLikeButton_Click"/>
                                                 </Grid>
                                             </StackPanel>
                                         </Grid>
@@ -250,19 +309,8 @@
                                                     <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Button x:Name="FollowButton" Content="Follow" Height="30" Grid.Column="0" Width="70" Click="FollowButton_Click">
-                                                    <Button.Style>
-                                                        <Style TargetType="Button" BasedOn="{StaticResource ActionButton}">
-                                                            <Setter Property="Background" Value="Gray"/>
-                                                            <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding IsFollowed}" Value="True">
-                                                                    <Setter Property="Background" Value="{StaticResource LikeGreen}"/>
-                                                                </DataTrigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Button.Style>
-                                                </Button>
-                                                <Button x:Name="UnfollowButton" Content="Unfollow" Background="Gray" Style="{StaticResource ActionButton}" Height="30" Grid.Column="1" Width="70" Click="UnFollowButton_Click"/>
+                                                <Button x:Name="FollowButton" Content="Follow" Height="30" Grid.Column="0" Width="70" Style="{StaticResource PositiveUserButtonStyle}" Click="FollowButton_Click"/>
+                                                <Button x:Name="UnfollowButton" Content="Unfollow" Style="{StaticResource NegativeUserButtonStyle}" Height="30" Grid.Column="1" Width="70" Click="UnFollowButton_Click"/>
                                             </Grid>
                                         </StackPanel>
                                     </Border>
