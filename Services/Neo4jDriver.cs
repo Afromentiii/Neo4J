@@ -25,6 +25,79 @@ namespace Neo4J.Services
             await Driver.VerifyConnectivityAsync();
         }
 
+        private async Task<T> ExecuteReadAsync<T>(Func<IAsyncQueryRunner, Task<T>> queryFunc, string errorMessage = "Database read error", T defaultValue = default)
+        {
+            await using var session = Driver.AsyncSession();
+            try
+            {
+                return await session.ExecuteReadAsync(queryFunc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{errorMessage}: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return defaultValue;
+            }
+        }
+
+        private async Task<T> ExecuteWriteAsync<T>(Func<IAsyncQueryRunner, Task<T>> queryFunc, string errorMessage = "Database write error", T defaultValue = default)
+        {
+            await using var session = Driver.AsyncSession();
+            try
+            {
+                return await session.ExecuteWriteAsync(queryFunc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{errorMessage}: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return defaultValue;
+            }
+        }
+
+        private async Task<T> ReadSingleAsync<T>(string query, object parameters, Func<IRecord, T> mapper, string errorMessage = "Database read error", T defaultValue = default)
+        {
+            return await ExecuteReadAsync(async tx =>
+            {
+                var cursor = parameters == null ? await tx.RunAsync(query) : await tx.RunAsync(query, parameters);
+                var record = await cursor.SingleOrDefaultAsync();
+                return record != null ? mapper(record) : defaultValue;
+            }, errorMessage, defaultValue);
+        }
+
+        private async Task<List<T>> ReadListAsync<T>(string query, object parameters, Func<IRecord, T> mapper, string errorMessage = "Database read error")
+        {
+            return await ExecuteReadAsync(async tx =>
+            {
+                var cursor = parameters == null ? await tx.RunAsync(query) : await tx.RunAsync(query, parameters);
+                var records = await cursor.ToListAsync();
+                var list = new List<T>();
+                foreach (var record in records)
+                {
+                    list.Add(mapper(record));
+                }
+                return list;
+            }, errorMessage, new List<T>());
+        }
+
+        private async Task<bool> WriteAsync(string query, object parameters, string errorMessage = "Database write error")
+        {
+            return await ExecuteWriteAsync(async tx =>
+            {
+                var cursor = parameters == null ? await tx.RunAsync(query) : await tx.RunAsync(query, parameters);
+                await cursor.ConsumeAsync();
+                return true;
+            }, errorMessage, false);
+        }
+
+        private async Task<T> WriteWithResultAsync<T>(string query, object parameters, Func<IRecord, T> mapper, string errorMessage = "Database write error", T defaultValue = default)
+        {
+            return await ExecuteWriteAsync(async tx =>
+            {
+                var cursor = parameters == null ? await tx.RunAsync(query) : await tx.RunAsync(query, parameters);
+                var record = await cursor.SingleOrDefaultAsync();
+                return record != null ? mapper(record) : defaultValue;
+            }, errorMessage, defaultValue);
+        }
+
         public async Task<bool> UserExists(string username)
         {
             var query = @"
@@ -32,20 +105,16 @@ namespace Neo4J.Services
             RETURN u
             LIMIT 1";
 
-            await using var session = Driver.AsyncSession();
-            var result = await session.RunAsync(query, new { username });
-            var record = await result.SingleOrDefaultAsync();
-
-            if (record != null) return true;
-            return false;
+            return await ReadSingleAsync(query, new { username }, record => true, "Error checking if user exists", false);
         }
 
-        public async Task CreateUser(string firstName, string lastName, 
-                                     string email, string password, 
-                                     string username)
+        public async Task<bool> CreateUser(string firstName, string lastName, string email, string password, string username)
         {
             if (await UserExists(username))
-                throw new Exception("User already exists");
+            {
+                MessageBox.Show("User already exists", "Database Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
 
             var query = @"
             CREATE (u:User {
@@ -57,115 +126,76 @@ namespace Neo4J.Services
                 role: 'user'
             })";
 
-            await using var session = Driver.AsyncSession();
-            await session.RunAsync(query, new { username, firstName, lastName, email, password });
+            return await WriteAsync(query, new { username, firstName, lastName, email, password }, "Error creating user");
         }
 
-        public async Task <bool> VerifyUser(string username, string password)
+        public async Task<bool> VerifyUser(string username, string password)
         {
-            if (await UserExists(username))
+            if (!await UserExists(username)) return false;
+
+            var query = @"
+            MATCH (u:User { username: $username })
+            RETURN u.password";
+
+            return await ReadSingleAsync(query, new { username }, record => 
             {
-                var query = @"
-                MATCH (u:User { username: $username })
-                RETURN u.password";
-
-                await using var session = Driver.AsyncSession();
-                var result = await session.RunAsync(query, new { username });
-                var record = await result.SingleOrDefaultAsync();
-
-                if (record != null)
-                {
-                    var passwordHash = record["u.password"].As<string>();
-                    bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, passwordHash);
-                    return isPasswordValid;
-                }
-            }
-            return false;
+                var passwordHash = record["u.password"].As<string>();
+                return BCrypt.Net.BCrypt.Verify(password, passwordHash);
+            }, "Error verifying user", false);
         }
         
         public async Task<User> GetUserData(string username)
         {
-            if (await UserExists(username))
+            if (!await UserExists(username)) return null;
+
+            var query = @"
+            MATCH (u:User { username: $username })
+            RETURN u.firstName AS firstName, 
+                   u.lastName AS lastName, 
+                   u.email AS email, 
+                   u.role AS role";
+
+            return await ReadSingleAsync(query, new { username }, record => 
             {
-                var query = @"
-                MATCH (u:User { username: $username })
-                RETURN u.firstName AS firstName, 
-                       u.lastName AS lastName, 
-                       u.email AS email, 
-                       u.role AS role";
-
-                await using var session = Driver.AsyncSession();
-                var result = await session.RunAsync(query, new { username });
-                var record = await result.SingleOrDefaultAsync();
-
-                if(record != null)
-                {
-                   var firstName = record["firstName"].As<string>();
-                   var lastName = record["lastName"].As<string>();
-                   var email = record["email"].As<string>();
-                   var role = record["role"].As<string>();
-                   return new User(username, email, firstName, lastName, role);
-                }
-            }
-            return null;
+                var firstName = record["firstName"].As<string>();
+                var lastName = record["lastName"].As<string>();
+                var email = record["email"].As<string>();
+                var role = record["role"].As<string>();
+                return new User(username, email, firstName, lastName, role);
+            }, "Error getting user data", null);
         }
 
         public async Task<List<Movie>> GetMovies()
         {
             string query = @"MATCH (m:Movie) 
-                                 RETURN m.title AS title, 
-                                        m.genre AS genre, 
-                                        m.released AS released,
-                                        m.poster AS poster";
+                             RETURN m.title AS title, 
+                                    m.genre AS genre, 
+                                    m.released AS released,
+                                    m.poster AS poster";
 
-            var movies = new List<Movie>();
-            await using var session = Driver.AsyncSession();
-
-            try
+            return await ReadListAsync(query, null, record => 
             {
-                var result = await session.ExecuteReadAsync(async tx =>
+                var title = record["title"].As<string>();
+                return new Movie
                 {
-                    var cursor = await tx.RunAsync(query);
-                    return await cursor.ToListAsync();
-                });
-
-                foreach (var record in result)
-                {
-                    var title = record["title"].As<string>();
-                    movies.Add(new Movie
-                    {
-                        Title = record["title"].As<string>(),
-                        Genre = record["genre"].As<string>(),
-                        Released = record["released"].As<int>(),
-                        PosterUrl = $"/Posters/{title}.jpg",
-                        DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}"
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error during downloading movies!: {ex.Message}");
-            }
-
-            return movies;
+                    Title = title,
+                    Genre = record["genre"].As<string>(),
+                    Released = record["released"].As<int>(),
+                    PosterUrl = $"/Posters/{title}.jpg",
+                    DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}"
+                };
+            }, "Error downloading movies");
         }
-        public async Task <bool> CreateLikeMovieRelation(string username, string movieTitle)
+
+        public async Task<bool> CreateLikeMovieRelation(string username, string movieTitle)
         {
             var query = @"
             MATCH (u:User { username: $username }), 
                   (m:Movie { title: $movieTitle })
             MERGE (u)-[:LIKED]->(m)
             RETURN u, m";
-            await using var session = Driver.AsyncSession();
 
-            var result = await session.RunAsync(query, new { username, movieTitle });
-            var record = await result.SingleOrDefaultAsync();
-
-            if (record != null)
-            {
-                return true;
-            }
-            return false;
+            return await WriteWithResultAsync(query, new { username, movieTitle }, record => true, "Error liking movie", false);
         }
 
         public async Task<bool> CreateObservesRelation(string currentUserUsername, string targetUsername)
@@ -176,34 +206,17 @@ namespace Neo4J.Services
             MERGE (u)-[:OBSERVES]->(t)
             RETURN u, t";
 
-            await using var session = Driver.AsyncSession();
-
-            var result = await session.RunAsync(query, new { currentUserUsername, targetUsername });
-            var record = await result.SingleOrDefaultAsync();
-
-            if (record != null)
-            {
-                return true;
-            }
-            return false;
+            return await WriteWithResultAsync(query, new { currentUserUsername, targetUsername }, record => true, "Error following user", false);
         }
 
         public async Task<HashSet<string>> GetLikedMovieTitles(string username)
         {
-            var likedTitles = new HashSet<string>();
             var query = @"
             MATCH (u:User {username: $username})-[:LIKED]->(m:Movie)
             RETURN m.title AS Title";
 
-            await using var session = Driver.AsyncSession();
-            var result = await session.RunAsync(query, new { username });
-
-            await result.ForEachAsync(record =>
-            {
-                likedTitles.Add(record["Title"].As<string>());
-            });
-
-            return likedTitles;
+            var list = await ReadListAsync(query, new { username }, record => record["Title"].As<string>(), "Error getting liked movies");
+            return new HashSet<string>(list);
         }
 
         public async Task<bool> RemoveLikeMovieRelation(string username, string movieTitle)
@@ -212,25 +225,7 @@ namespace Neo4J.Services
                         DELETE r
                         RETURN count(r) AS deletedCount";
 
-            await using var session = Driver.AsyncSession();
-
-            try
-            {
-                var result = await session.RunAsync(query, new { username, movieTitle });
-                var record = await result.SingleOrDefaultAsync();
-
-                if (record != null && record["deletedCount"].As<int>() > 0)
-                {
-                    //MessageBox.Show(record["deletedCount"].ToString());
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error during removing liked relation: {ex.Message}");
-            }
-
-            return false;
+            return await WriteWithResultAsync(query, new { username, movieTitle }, record => record["deletedCount"].As<int>() > 0, "Error removing liked relation", false);
         }
 
         public async Task<List<object>> GetUsers(string currentUser)
@@ -240,49 +235,19 @@ namespace Neo4J.Services
                     WHERE u.username <> $currentUser
                     RETURN u.username AS username";
 
-            var usernames = new List<object>();
-            await using var session = Driver.AsyncSession();
-
-            try
-            {
-                var result = await session.ExecuteReadAsync(async tx =>
-                {
-                    var cursor = await tx.RunAsync(query, new { currentUser });
-                    return await cursor.ToListAsync();
-                });
-
-                foreach (var record in result)
-                {
-                    usernames.Add(new
-                    {
-                        Username = record["username"].As<string>()
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error during downloading users: {ex.Message}");
-            }
-
-            return usernames;
+            return await ReadListAsync<object>(query, new { currentUser }, record => new { Username = record["username"].As<string>() }, "Error downloading users");
         }
+
         public async Task<HashSet<string>> GetFollowedUsers(string username)
         {
-            var followedUsers = new HashSet<string>();
             var query = @"
             MATCH (u:User {username: $username})-[:OBSERVES]->(f:User)
             RETURN f.username AS FollowedUsername";
 
-            await using var session = Driver.AsyncSession();
-            var result = await session.RunAsync(query, new { username });
-
-            await result.ForEachAsync(record =>
-            {
-                followedUsers.Add(record["FollowedUsername"].As<string>());
-            });
-
-            return followedUsers;
+            var list = await ReadListAsync(query, new { username }, record => record["FollowedUsername"].As<string>(), "Error getting followed users");
+            return new HashSet<string>(list);
         }
+
         public async Task<bool> RemoveObservesRelation(string followerUsername, string followedUsername)
         {
             var query = @"
@@ -290,30 +255,11 @@ namespace Neo4J.Services
             DELETE r
             RETURN count(r) AS deletedCount";
 
-            await using var session = Driver.AsyncSession();
-
-            try
-            {
-                var result = await session.RunAsync(query, new { followerUsername, followedUsername });
-                var record = await result.SingleOrDefaultAsync();
-
-                if (record != null && record["deletedCount"].As<int>() > 0)
-                {
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error during removing OBSERVES relation: {ex.Message}");
-            }
-
-            return false;
+            return await WriteWithResultAsync(query, new { followerUsername, followedUsername }, record => record["deletedCount"].As<int>() > 0, "Error removing observed relation", false);
         }
 
         public async Task<List<Movie>> RecommendMoviesForUser(string username, int limit = 10)
         {
-            var movies = new List<Movie>();
-
             var query = @"
             MATCH (u:User {username: $username})-[:OBSERVES]->(f:User)-[:LIKED]->(m:Movie)
             WHERE NOT (u)-[:LIKED]->(m)
@@ -322,35 +268,24 @@ namespace Neo4J.Services
             ORDER BY score DESC
             LIMIT $limit";
 
-            await using var session = Driver.AsyncSession();
-
-            var result = await session.ExecuteReadAsync(async tx =>
-            {
-                var cursor = await tx.RunAsync(query, new { username, limit });
-                return await cursor.ToListAsync();
-            });
-
-            foreach (var record in result)
+            return await ReadListAsync(query, new { username, limit }, record => 
             {
                 var title = record["title"].As<string>();
                 var score = record["score"].As<int>();
-                movies.Add(new Movie
+                return new Movie
                 {
-                    Title = record["title"].As<string>(),
+                    Title = title,
                     Genre = record["genre"].As<string>(),
                     Released = record["released"].As<int>(),
                     PosterUrl = $"/Posters/{title}.jpg",
                     DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}",
                     RecommendationInfo = $"Recommended by {score} people"
-                });
-            }
-            return movies;
+                };
+            }, "Error getting recommended movies by users");
         }
 
         public async Task<List<Movie>> RecommendMoviesByGenre(string username, int limit = 10)
         {
-            var movies = new List<Movie>();
-
             var query = @"
             MATCH (u:User {username: $username})-[:LIKED]->(:Movie)-[:IN_GENRE]->(g:Genre)
             MATCH (g)<-[:IN_GENRE]-(m:Movie)
@@ -363,20 +298,11 @@ namespace Neo4J.Services
             ORDER BY score DESC
             LIMIT $limit";
 
-            await using var session = Driver.AsyncSession();
-
-            var result = await session.ExecuteReadAsync(async tx =>
-            {
-                var cursor = await tx.RunAsync(query, new { username, limit });
-                return await cursor.ToListAsync();
-            });
-
-            foreach (var record in result)
+            return await ReadListAsync(query, new { username, limit }, record => 
             {
                 var title = record["title"].As<string>();
                 var score = record["score"].As<int>();
-
-                movies.Add(new Movie
+                return new Movie
                 {
                     Title = title,
                     Genre = record["genre"].As<string>(),
@@ -384,11 +310,10 @@ namespace Neo4J.Services
                     PosterUrl = $"/Posters/{title}.jpg",
                     DisplayInfo = $"{record["released"].As<int>()} • {record["genre"].As<string>()}",
                     RecommendationInfo = $"Popular in your genres {score}"
-                });
-            }
-
-            return movies;
+                };
+            }, "Error getting recommended movies by genre");
         }
+
         public void Dispose()
         {
             Driver?.Dispose();

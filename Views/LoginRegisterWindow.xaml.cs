@@ -95,9 +95,12 @@ namespace Neo4J.Views
             {
                 string passwordHash = BCrypt.Net.BCrypt.HashPassword(confirmPass);
                 ((System.Windows.Controls.Button)sender).IsEnabled = false;
-                await Neo4jDriver.Instance.CreateUser(firstName, lastName, email, passwordHash, username);
-                MessageBox.Show($"User has been added!");
-                LoginBtn.IsSelected = true;
+                bool success = await Neo4jDriver.Instance.CreateUser(firstName, lastName, email, passwordHash, username);
+                if (success)
+                {
+                    MessageBox.Show($"User has been added!");
+                    LoginBtn.IsSelected = true;
+                }
             }
             catch (Exception ex) {MessageBox.Show($"Error: {ex.Message}");}
             finally { ((System.Windows.Controls.Button)sender).IsEnabled = true;}
