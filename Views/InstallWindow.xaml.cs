@@ -23,6 +23,44 @@ namespace Neo4J.Views
             InitializeComponent();
         }
 
+        private void BtnImport_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Text files (*.txt)|*.txt|Env files (*.env)|*.env|All files (*.*)|*.*",
+                Title = "Select Neo4j Aura Credentials File"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    string[] lines = System.IO.File.ReadAllLines(openFileDialog.FileName);
+                    foreach (string line in lines)
+                    {
+                        if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+                            continue;
+
+                        var parts = line.Split(new[] { '=' }, 2);
+                        if (parts.Length == 2)
+                        {
+                            string key = parts[0].Trim();
+                            string value = parts[1].Trim();
+
+                            if (key == "NEO4J_URI") TxtUrl.Text = value;
+                            else if (key == "NEO4J_USERNAME") TxtUser.Text = value;
+                            else if (key == "NEO4J_PASSWORD") TxtPassword.Password = value;
+                        }
+                    }
+                    MessageBox.Show("Credentials imported successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error reading file: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
         private async void BtnInstall_Click(object sender, RoutedEventArgs e)
         {
             string connectionUrl = TxtUrl.Text;

@@ -106,5 +106,10 @@ namespace Neo4J.Views
             finally { ((System.Windows.Controls.Button)sender).IsEnabled = true;}
             
         }
+
+        private void LoginUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

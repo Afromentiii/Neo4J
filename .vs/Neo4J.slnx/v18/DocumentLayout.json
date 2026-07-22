@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "E:\\Visual\\Neo4JGIT\\Neo4J\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\services\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:services\\neo4jdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\views\\installwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:views\\installwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\views\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:views\\installwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\views\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:views\\loginregisterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|e:\\visual\\neo4jgit\\neo4j\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD4566B-8A5A-D146-19D2-905D5BB2E365}|Neo4J.csproj|solutionrelative:properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "App.config",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -43,56 +35,32 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-02-22T23:03:01.572Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Neo4jDriver.cs",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Services\\Neo4jDriver.cs",
-              "RelativeDocumentMoniker": "Services\\Neo4jDriver.cs",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Services\\Neo4jDriver.cs",
-              "RelativeToolTip": "Services\\Neo4jDriver.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAAAJEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T23:54:11.192Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InstallWindow.xaml.cs",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\InstallWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\InstallWindow.xaml.cs",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\InstallWindow.xaml.cs",
-              "RelativeToolTip": "Views\\InstallWindow.xaml.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAADwv0cAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T23:36:28.841Z"
+              "DocumentIndex": 1,
+              "Title": "LoginRegisterWindow.xaml",
+              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\LoginRegisterWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\LoginRegisterWindow.xaml",
+              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\LoginRegisterWindow.xaml",
+              "RelativeToolTip": "Views\\LoginRegisterWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-22T00:23:50.275Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "InstallWindow.xaml",
               "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\InstallWindow.xaml",
               "RelativeDocumentMoniker": "Views\\InstallWindow.xaml",
               "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Views\\InstallWindow.xaml",
               "RelativeToolTip": "Views\\InstallWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-07-21T23:36:16.408Z",
+              "WhenOpened": "2026-07-22T00:23:43.32Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Resources.Designer.cs",
-              "DocumentMoniker": "E:\\Visual\\Neo4JGIT\\Neo4J\\Properties\\Resources.Designer.cs",
-              "RelativeDocumentMoniker": "Properties\\Resources.Designer.cs",
-              "ToolTip": "E:\\Visual\\Neo4JGIT\\Neo4J\\Properties\\Resources.Designer.cs",
-              "RelativeToolTip": "Properties\\Resources.Designer.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-21T23:33:21.527Z"
             }
           ]
         }

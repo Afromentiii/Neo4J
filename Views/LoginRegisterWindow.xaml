@@ -82,6 +82,7 @@
         </Style>
 
         <Style TargetType="TabItem">
+            <Setter Property="Foreground" Value="#777777"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
@@ -101,7 +102,6 @@
                                     <Style TargetType="TextBlock">
                                         <Setter Property="FontWeight" Value="Bold"/>
                                         <Setter Property="FontSize" Value="14"/>
-                                        <Setter Property="Foreground" Value="#555555"/>
                                     </Style>
                                 </ContentPresenter.Resources>
                             </ContentPresenter>
@@ -113,10 +113,8 @@
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter TargetName="TabBorder" Property="Background" Value="DarkBlue"/>
                                 <Setter TargetName="TabBorder" Property="BorderBrush" Value="DarkBlue"/>
-                            </Trigger>
-                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True">
                                 <Setter Property="Foreground" Value="White"/>
-                            </DataTrigger>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -186,10 +184,10 @@
                     <TabItem x:Name="LoginBtn" Header="LOGIN">
                         <StackPanel Margin="30,10">
                             <TextBlock Text="Username" Margin="5,0,0,5" FontWeight="SemiBold" Foreground="#444"/>
-                            <TextBox Text="jakub" x:Name="LoginUsername" Height="42" Style="{StaticResource ModernInputStyle}"/>
+                            <TextBox Text="" x:Name="LoginUsername" Height="42" Style="{StaticResource ModernInputStyle}" TextChanged="LoginUsername_TextChanged"/>
 
                             <TextBlock Text="Password" Margin="5,15,0,5" FontWeight="SemiBold" Foreground="#444"/>
-                            <PasswordBox Password="meran123" x:Name="LoginPassword" Height="42" Style="{StaticResource ModernInputStyle}"/>
+                            <PasswordBox Password="" x:Name="LoginPassword" Height="42" Style="{StaticResource ModernInputStyle}"/>
 
                             <Button Content="Log In"
                                     Height="50"

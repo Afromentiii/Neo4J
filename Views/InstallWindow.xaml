@@ -126,115 +126,138 @@
                              Password=""
                              Style="{StaticResource CommonHoverEffect}"/>
 
-                <Button x:Name="BtnInstall"
-                        Content="Install &amp; Save Configuration"
-                        Margin="0,30,0,0"
-                        Height="45"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        Background="DarkBlue"
-                        Foreground="WhiteSmoke"
-                        Click="BtnInstall_Click"
-                        RenderTransformOrigin="0.5,0.5">
+                <Grid Margin="0,30,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                    <Button.RenderTransform>
-                        <ScaleTransform ScaleX="1"
-                                        ScaleY="1"/>
-                    </Button.RenderTransform>
+                    <Button x:Name="BtnImport"
+                            Grid.Column="0"
+                            Content="Import Aura File"
+                            Height="45"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Background="#D2691E"
+                            Foreground="WhiteSmoke"
+                            Click="BtnImport_Click"
+                            RenderTransformOrigin="0.5,0.5">
 
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border x:Name="border"
-                                                Background="{TemplateBinding Background}"
-                                                CornerRadius="10">
-                                            <ContentPresenter
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"/>
-                                        </Border>
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Button.RenderTransform>
 
-                                        <ControlTemplate.Triggers>
-
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Trigger.EnterActions>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    CornerRadius="10">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#FFA07A" Duration="0:0:0.2"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.15"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.15"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#D2691E" Duration="0:0:0.2"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                                <EventTrigger RoutedEvent="Button.Click">
                                                     <BeginStoryboard>
                                                         <Storyboard>
-                                                            <ColorAnimation
-                                                                Storyboard.TargetName="border"
-                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                                To="Green"
-                                                                Duration="0:0:0.2"/>
-
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                                To="1.05"
-                                                                Duration="0:0:0.15"/>
-
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                                To="1.05"
-                                                                Duration="0:0:0.15"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="0.9" Duration="0:0:0.08" AutoReverse="True"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="0.9" Duration="0:0:0.08" AutoReverse="True"/>
                                                         </Storyboard>
                                                     </BeginStoryboard>
-                                                </Trigger.EnterActions>
+                                                </EventTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
-                                                <Trigger.ExitActions>
+                    <Button x:Name="BtnInstall"
+                            Grid.Column="2"
+                            Content="Save Configuration"
+                            Height="45"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Background="DarkBlue"
+                            Foreground="WhiteSmoke"
+                            Click="BtnInstall_Click"
+                            RenderTransformOrigin="0.5,0.5">
+
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Button.RenderTransform>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                                    Background="{TemplateBinding Background}"
+                                                    CornerRadius="10">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="Green" Duration="0:0:0.2"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.15"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.15"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="DarkBlue" Duration="0:0:0.2"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                                <EventTrigger RoutedEvent="Button.Click">
                                                     <BeginStoryboard>
                                                         <Storyboard>
-                                                            <ColorAnimation
-                                                                Storyboard.TargetName="border"
-                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                                To="DarkBlue"
-                                                                Duration="0:0:0.2"/>
-
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                                To="1"
-                                                                Duration="0:0:0.15"/>
-
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                                To="1"
-                                                                Duration="0:0:0.15"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="0.9" Duration="0:0:0.08" AutoReverse="True"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="0.9" Duration="0:0:0.08" AutoReverse="True"/>
+                                                            <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#007ACC" Duration="0:0:0.1" AutoReverse="True"/>
                                                         </Storyboard>
                                                     </BeginStoryboard>
-                                                </Trigger.ExitActions>
-                                            </Trigger>
-
-                                            <EventTrigger RoutedEvent="Button.Click">
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation
-                                                            Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                            To="0.9"
-                                                            Duration="0:0:0.08"
-                                                            AutoReverse="True"/>
-
-                                                        <DoubleAnimation
-                                                            Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                            To="0.9"
-                                                            Duration="0:0:0.08"
-                                                            AutoReverse="True"/>
-
-                                                        <ColorAnimation
-                                                            Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            To="#007ACC"
-                                                            Duration="0:0:0.1"
-                                                            AutoReverse="True"/>
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </EventTrigger>
-
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                                                </EventTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
 
             </StackPanel>
         </Grid>
