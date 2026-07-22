@@ -104,12 +104,28 @@ namespace Neo4J.Views
         {
             if (allMovies == null || MoviesList == null) return;
             string searchText = SearchMovieBox.Text?.ToLower() ?? "";
-            string selectedGenre = GenreFilterBox.SelectedItem as string ?? "All Genres";
+            
+            var selectedGenres = new List<string>();
+            if (GenreFilterBox.ItemsSource is IEnumerable<GenreItem> items)
+            {
+                selectedGenres = items.Where(i => i.IsSelected).Select(i => i.Name).ToList();
+            }
+
+            if (SelectedGenresText != null)
+            {
+                SelectedGenresText.Text = selectedGenres.Count == 0 ? "All Genres" : string.Join(", ", selectedGenres);
+            }
 
             var filtered = allMovies.Where(m => 
-                (string.IsNullOrWhiteSpace(searchText) || m.Title.ToLower().Contains(searchText)) &&
-                (selectedGenre == "All Genres" || m.Genre == selectedGenre)
-            ).ToList();
+            {
+                bool textMatch = string.IsNullOrWhiteSpace(searchText) || m.Title.ToLower().Contains(searchText);
+                if (!textMatch) return false;
+
+                if (selectedGenres.Count == 0) return true;
+
+                var movieGenres = m.Genre.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                return selectedGenres.Any(sg => movieGenres.Contains(sg));
+            }).ToList();
 
             MoviesList.ItemsSource = filtered;
         }
@@ -119,9 +135,17 @@ namespace Neo4J.Views
             FilterMovies_Changed();
         }
 
-        private void FilterMovies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void FilterMovies_CheckBoxChanged(object sender, RoutedEventArgs e)
         {
             FilterMovies_Changed();
+        }
+
+        private void GenreFilterBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (GenreFilterBox.SelectedIndex != -1)
+            {
+                GenreFilterBox.SelectedIndex = -1;
+            }
         }
 
         private LoadingWindow? _loadingWindow;
@@ -166,13 +190,15 @@ namespace Neo4J.Views
                 if (followedUsers.Contains(u.Username)) u.IsFollowed = true;
             }
 
-            var genres = allMovies.Select(m => m.Genre).Distinct().OrderBy(g => g).ToList();
-            genres.Insert(0, "All Genres");
-            GenreFilterBox.SelectionChanged -= FilterMovies_SelectionChanged;
+            var genres = allMovies
+                .SelectMany(m => m.Genre.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries))
+                .Distinct()
+                .OrderBy(g => g)
+                .Select(g => new GenreItem { Name = g, IsSelected = false })
+                .ToList();
+
             SearchMovieBox.TextChanged -= FilterMovies_TextChanged;
             GenreFilterBox.ItemsSource = genres;
-            if (GenreFilterBox.SelectedIndex == -1) GenreFilterBox.SelectedIndex = 0;
-            GenreFilterBox.SelectionChanged += FilterMovies_SelectionChanged;
             SearchMovieBox.TextChanged += FilterMovies_TextChanged;
 
             FilterMovies_Changed();

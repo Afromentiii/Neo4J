@@ -287,9 +287,7 @@ namespace Neo4J.Services
         public async Task<List<Movie>> RecommendMoviesByGenre(string username, int limit = 10)
         {
             var query = @"
-            MATCH (u:User {username: $username})-[:LIKED]->(:Movie)-[:IN_GENRE]->(g:Genre)
-            WITH DISTINCT g, u
-            MATCH (g)<-[:IN_GENRE]-(m:Movie)
+            MATCH (u:User {username: $username})-[:LIKED]->(:Movie)-[:IN_GENRE]->(g:Genre)<-[:IN_GENRE]-(m:Movie)
             WHERE NOT (u)-[:LIKED]->(m)
             RETURN m.title AS title,
                    m.genre AS genre,
