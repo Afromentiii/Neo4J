@@ -18,8 +18,7 @@ namespace Neo4J.Views
     public partial class MainWindow : Window
     {
         private User currentUser;
-        private List<Movie> movies;
-        private List<object> users;
+
         public MainWindow(User user)
         {
             InitializeComponent();
