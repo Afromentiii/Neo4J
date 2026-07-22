@@ -38,7 +38,8 @@
             <Setter Property="Background" Value="DarkBlue"/>
             <Setter Property="Foreground" Value="WhiteSmoke"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="RenderTransform">
@@ -100,8 +101,9 @@
                                             ContentSource="Header">
                                 <ContentPresenter.Resources>
                                     <Style TargetType="TextBlock">
-                                        <Setter Property="FontWeight" Value="Bold"/>
-                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                        <Setter Property="FontFamily" Value="Segoe UI"/>
                                     </Style>
                                 </ContentPresenter.Resources>
                             </ContentPresenter>
@@ -172,8 +174,9 @@
 
                 <StackPanel Grid.Row="0" Margin="0,10,0,25">
                     <TextBlock Text="Movie Application"
-                               FontSize="26"
-                               FontWeight="Bold"
+                               FontSize="28"
+                               FontFamily="Segoe UI Light"
+                               FontWeight="Normal"
                                Foreground="#2D2D2D"
                                HorizontalAlignment="Center"/>
 

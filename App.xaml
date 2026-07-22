@@ -5,8 +5,11 @@
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <Style TargetType="Window">
-            <Setter Property="FontFamily" Value="Century Gothic, Segoe UI, sans-serif" />
+            <Setter Property="FontFamily" Value="Segoe UI, Tahoma, sans-serif" />
             <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="UseLayoutRounding" Value="True" />
         </Style>
     </Application.Resources>
 </Application>

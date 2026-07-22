@@ -79,13 +79,14 @@
             <StackPanel Grid.Row="0"
                         VerticalAlignment="Center">
                 <TextBlock Text="Neo4J Database Setup"
-                           FontSize="20"
-                           FontWeight="Bold"
+                           FontSize="24"
+                           FontFamily="Segoe UI Symbol"
                            Foreground="#2D2D2D"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center" FontWeight="Bold"/>
 
                 <TextBlock Text="Enter your connection details below"
-                           FontSize="12"
+                           FontSize="13"
+                           FontFamily="Segoe UI"
                            Foreground="Gray"
                            HorizontalAlignment="Center"/>
             </StackPanel>
@@ -137,7 +138,7 @@
                             Grid.Column="0"
                             Content="Import Aura File"
                             Height="45"
-                            FontSize="16"
+                            FontSize="14"
                             FontWeight="Bold"
                             Background="#D2691E"
                             Foreground="WhiteSmoke"
@@ -196,15 +197,16 @@
                     </Button>
 
                     <Button x:Name="BtnInstall"
-                            Grid.Column="2"
-                            Content="Save Configuration"
-                            Height="45"
-                            FontSize="16"
-                            FontWeight="Bold"
-                            Background="DarkBlue"
-                            Foreground="WhiteSmoke"
-                            Click="BtnInstall_Click"
-                            RenderTransformOrigin="0.5,0.5">
+                        Grid.Column="2"
+                        Content="Install &amp; Save Configuration"
+                        Height="45"
+                        FontSize="14"
+                        FontFamily="Segoe UI"
+                        FontWeight="Bold"
+                        Background="DarkBlue"
+                        Foreground="WhiteSmoke"
+                        Click="BtnInstall_Click"
+                        RenderTransformOrigin="0.5,0.5">
 
                         <Button.RenderTransform>
                             <ScaleTransform ScaleX="1" ScaleY="1"/>

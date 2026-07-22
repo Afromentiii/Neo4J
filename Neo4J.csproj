@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\PlaywriteNZBasic-ExtraLight.ttf" />
+    <None Remove="Fonts\PlaywriteNZBasic-Light.ttf" />
+    <None Remove="Fonts\PlaywriteNZBasic-Regular.ttf" />
+    <None Remove="Fonts\PlaywriteNZBasic-Thin.ttf" />
     <None Remove="Posters\2001 A Space Odyssey.jpg" />
     <None Remove="Posters\Ant-Man and the Wasp.jpg" />
     <None Remove="Posters\Ant-Man.jpg" />
@@ -53,6 +57,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\PlaywriteNZBasic-ExtraLight.ttf" />
+    <Resource Include="Fonts\PlaywriteNZBasic-Light.ttf" />
+    <Resource Include="Fonts\PlaywriteNZBasic-Regular.ttf" />
+    <Resource Include="Fonts\PlaywriteNZBasic-Thin.ttf" />
     <Resource Include="Posters\2001 A Space Odyssey.jpg" />
     <Resource Include="Posters\Captain America Civil War.jpg" />
     <Resource Include="Posters\Jurassic Park.jpg" />

@@ -228,14 +228,14 @@ namespace Neo4J.Services
             return await WriteWithResultAsync(query, new { username, movieTitle }, record => record["deletedCount"].As<int>() > 0, "Error removing liked relation", false);
         }
 
-        public async Task<List<object>> GetUsers(string currentUser)
+        public async Task<List<User>> GetUsers(string currentUser)
         {
             string query = @"
                     MATCH (u:User)
                     WHERE u.username <> $currentUser
                     RETURN u.username AS username";
 
-            return await ReadListAsync<object>(query, new { currentUser }, record => new { Username = record["username"].As<string>() }, "Error downloading users");
+            return await ReadListAsync<User>(query, new { currentUser }, record => new User(record["username"].As<string>()), "Error downloading users");
         }
 
         public async Task<HashSet<string>> GetFollowedUsers(string username)

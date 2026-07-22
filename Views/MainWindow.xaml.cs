@@ -53,53 +53,30 @@ namespace Neo4J.Views
         private async void LikeButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not Button likeButton) return;
+            if (likeButton.DataContext is not Movie movie) return;
 
-            dynamic movie = likeButton.DataContext;
-            string movieTitle = movie.Title;
-            bool liked = await Neo4jDriver.Instance.CreateLikeMovieRelation(currentUser.Username, movieTitle);
-
-            if (liked)
-            {
-                likeButton.Background = (Brush)FindResource("LikeGreen");
-            }
-
+            bool liked = await Neo4jDriver.Instance.CreateLikeMovieRelation(currentUser.Username, movie.Title);
+            if (liked) movie.IsLiked = true;
         }
 
         private async void DisLikeButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not Button disLikeButton) return;
+            if (disLikeButton.DataContext is not Movie movie) return;
 
-            var parentGrid = VisualTreeHelper.GetParent(disLikeButton) as Grid;
-
-            var likeButton = parentGrid?.FindName("LikeButton") as Button;
-
-            dynamic movie = disLikeButton.DataContext;
-            string movieTitle = movie.Title;
-
-            bool removed = await Neo4jDriver.Instance.RemoveLikeMovieRelation(currentUser.Username, movieTitle);
-
-            if (removed)
-            {
-                if (likeButton != null)
-                {
-                    likeButton.Background = Brushes.Gray;
-                }
-            }
+            bool removed = await Neo4jDriver.Instance.RemoveLikeMovieRelation(currentUser.Username, movie.Title);
+            if (removed) movie.IsLiked = false;
         }
 
         private async void FollowButton_Click(object sender, RoutedEventArgs e) 
         {
             if (sender is not Button followButton) return;
+            if (followButton.DataContext is not User targetUser) return;
 
-            dynamic userField = followButton.DataContext;
-            string username = userField.Username;
             try
             {
-                bool isTrue = await Neo4jDriver.Instance.CreateObservesRelation(currentUser.Username, username);
-                if (isTrue)
-                {
-                    followButton.Background = (Brush)FindResource("LikeGreen");
-                }
+                bool isTrue = await Neo4jDriver.Instance.CreateObservesRelation(currentUser.Username, targetUser.Username);
+                if (isTrue) targetUser.IsFollowed = true;
             }
             catch (Exception ex)
             {
@@ -110,20 +87,10 @@ namespace Neo4J.Views
         private async void UnFollowButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not Button unfollowButton) return;
+            if (unfollowButton.DataContext is not User targetUser) return;
 
-            var parentGrid = VisualTreeHelper.GetParent(unfollowButton) as Grid;
-            var followButton = parentGrid?.FindName("FollowButton") as Button;
-
-            dynamic user = unfollowButton.DataContext;
-            string usernameToUnfollow = user.Username;
-
-            bool removed = await Neo4jDriver.Instance.RemoveObservesRelation(currentUser.Username, usernameToUnfollow);
-
-            if (removed)
-            {
-                if (followButton != null)
-                    followButton.Background = Brushes.Gray;
-            }
+            bool removed = await Neo4jDriver.Instance.RemoveObservesRelation(currentUser.Username, targetUser.Username);
+            if (removed) targetUser.IsFollowed = false;
         }
         public async void InitUserXAML()
         {
@@ -132,82 +99,35 @@ namespace Neo4J.Views
 
         public async Task InitMoviesRefresh()
         {
-            var likedTitles = await Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username);
-            movies = await Neo4jDriver.Instance.GetMovies();
-            users = await Neo4jDriver.Instance.GetUsers(currentUser.Username);
+            LoadingOverlay.Visibility = Visibility.Visible;
+            MainContentScroll.Visibility = Visibility.Collapsed;
+
+            var tLiked = Task.Run(() => Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username));
+            var tMovies = Task.Run(() => Neo4jDriver.Instance.GetMovies());
+            var tUsers = Task.Run(() => Neo4jDriver.Instance.GetUsers(currentUser.Username));
+
+            await Task.WhenAll(tLiked, tMovies, tUsers);
+
+            var likedTitles = await tLiked;
+            var movies = await tMovies;
+            var users = await tUsers;
+
+            foreach (var movie in movies)
+            {
+                if (likedTitles.Contains(movie.Title)) movie.IsLiked = true;
+            }
+
+            var followedUsers = await Neo4jDriver.Instance.GetFollowedUsers(currentUser.Username);
+            foreach (var u in users)
+            {
+                if (followedUsers.Contains(u.Username)) u.IsFollowed = true;
+            }
 
             MoviesList.ItemsSource = movies;
             UsersList.ItemsSource = users;
 
-            MoviesList.UpdateLayout();
-            UsersList.UpdateLayout();
-
-            await HighlightLikedMoviesAsync(likedTitles);
-            await InitUsersHighlight();
-        }
-
-        private async Task HighlightLikedMoviesAsync(HashSet<string> likedTitles)
-        {
-            if (MoviesList.Items.Count == 0) return;
-
-            await Dispatcher.InvokeAsync(() =>
-            {
-                foreach (var item in MoviesList.Items)
-                {
-                    var container = MoviesList.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
-                    if (container == null) continue;
-
-                    var likeButton = FindChild<Button>(container, "LikeButton");
-
-                    if (likeButton != null)
-                    {
-                        var titleProp = item.GetType().GetProperty("Title");
-                        string title = titleProp?.GetValue(item)?.ToString();
-
-                        if (title != null && likedTitles.Contains(title))
-                        {
-                            likeButton.Background = (Brush)FindResource("LikeGreen");
-                        }
-                    }
-                }
-            }, System.Windows.Threading.DispatcherPriority.Background);
-        }
-
-        public async Task InitUsersHighlight()
-        {
-            var followedUsers = await Neo4jDriver.Instance.GetFollowedUsers(currentUser.Username);
-
-            foreach (var item in UsersList.Items)
-            {
-                var container = UsersList.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
-                if (container == null) continue;
-
-                var followButton = FindChild<Button>(container, "FollowButton");
-                if (followButton != null)
-                {
-                    var usernameProp = item.GetType().GetProperty("Username");
-                    string username = usernameProp?.GetValue(item)?.ToString();
-
-                    if (username != null && followedUsers.Contains(username))
-                    {
-                        followButton.Background = (Brush)FindResource("LikeGreen");
-                    }
-                }
-            }
-        }
-        private T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
-        {
-            if (parent == null) return null;
-            int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
-            for (int i = 0; i < childrenCount; i++)
-            {
-                var child = VisualTreeHelper.GetChild(parent, i);
-                if (child is T tChild && (child as FrameworkElement).Name == childName) return tChild;
-
-                var result = FindChild<T>(child, childName);
-                if (result != null) return result;
-            }
-            return null;
+            LoadingOverlay.Visibility = Visibility.Collapsed;
+            MainContentScroll.Visibility = Visibility.Visible;
         }
     }
 
