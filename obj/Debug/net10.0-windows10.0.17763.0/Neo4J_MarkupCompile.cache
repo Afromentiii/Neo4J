@@ -1,5 +1,5 @@
 ﻿Neo4J
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS10_0_17763_0;NET5_0_OR_GREATER
 E:\Visual\Neo4JGIT\Neo4J\App.xaml
 4-2085582615
 
-12-1620666771
+1443150040
 211-247993451
 Views\InstallWindow.xaml;Views\LoadingWindow.xaml;Views\LoginRegisterWindow.xaml;Views\MainWindow.xaml;
 
-False
+True
 

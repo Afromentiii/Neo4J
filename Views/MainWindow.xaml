@@ -55,7 +55,7 @@
             <Setter Property="Height" Value="340"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.1"/>
+                    <DropShadowEffect BlurRadius="25" ShadowDepth="5" Opacity="0.25"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
@@ -202,8 +202,41 @@
             <Setter Property="Opacity" Value="0.4"/>
         </Style>
 
+        <Style x:Key="ModernScrollBar" TargetType="ScrollBar">
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="Margin" Value="0,15,0,5"/>
+            <Setter Property="Background" Value="#0A000000"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <Track Name="PART_Track">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border x:Name="ThumbBorder" CornerRadius="5" Background="#55000000" Margin="1"/>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="ThumbBorder" Property="Background" Value="#88000000"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsDragging" Value="True">
+                                                        <Setter TargetName="ThumbBorder" Property="Background" Value="{StaticResource Accent}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="SectionContainer" TargetType="Border">
-            <Setter Property="Background" Value="#f7f7f7"/>
+            <Setter Property="Background" Value="#FFF1F1F1"/>
             <Setter Property="CornerRadius" Value="20"/>
             <Setter Property="Margin" Value="25,20,25,10"/>
             <Setter Property="Padding" Value="0,20,0,10"/>
@@ -268,13 +301,17 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Movie List" FontSize="20" FontWeight="Bold" 
-                                   Margin="25,0,0,10" Foreground="{StaticResource Accent}"/>
+                        <Border HorizontalAlignment="Left" Background="{StaticResource CardBackground}" CornerRadius="8" Margin="25,0,0,10" Padding="15,8">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                            </Border.Effect>
+                            <TextBlock Text="Movie List" FontFamily="Bahnschrift" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Accent}" Margin="0"/>
+                        </Border>
                         <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="White" CornerRadius="2"/>
 
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
+                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10,30,20" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource BlackScrollBar}"/>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource ModernScrollBar}"/>
                         </ScrollViewer.Resources>
 
                         <ItemsControl x:Name="MoviesList">
@@ -326,13 +363,17 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="User List" FontSize="20" FontWeight="Bold" 
-                                   Margin="25,0,0,10" Foreground="{StaticResource Accent}"/>
+                        <Border HorizontalAlignment="Left" Background="{StaticResource CardBackground}" CornerRadius="8" Margin="25,0,0,10" Padding="15,8">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                            </Border.Effect>
+                            <TextBlock Text="User List" FontFamily="Bahnschrift" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Accent}" Margin="0"/>
+                        </Border>
                         <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
 
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
+                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10,30,20" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource BlackScrollBar}"/>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource ModernScrollBar}"/>
                         </ScrollViewer.Resources>
 
                         <ItemsControl x:Name="UsersList">
@@ -378,16 +419,21 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="25,0,0,10" VerticalAlignment="Center">
-                            <TextBlock Text="Recommended By People" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent}"/>
-                            <Button Content="Show Recommended Movies By People" Margin="10,0,0,0" Background="{StaticResource Accent}"
+                            <Border Background="{StaticResource CardBackground}" CornerRadius="8" Padding="15,8">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                </Border.Effect>
+                                <TextBlock Text="Recommended By People" FontFamily="Bahnschrift" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Accent}" Margin="0"/>
+                            </Border>
+                            <Button Content="Show Recommended Movies By People" Margin="15,0,0,0" Background="{StaticResource Accent}"
                                     Style="{StaticResource ActionButton}" Height="35" Width="300" Click="ShowRecommendedMoviesButton_Click"/>
                         </StackPanel>
 
                         <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
 
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
+                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10,30,20" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource BlackScrollBar}"/>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource ModernScrollBar}"/>
                         </ScrollViewer.Resources>
 
                         <ItemsControl x:Name="RecommendedMoviesList">
@@ -437,16 +483,21 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="25,0,0,10" VerticalAlignment="Center">
-                            <TextBlock Text="Recommended By Genre" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent}"/>
-                            <Button Content="Show Recommended Movies By Genre" Margin="10,0,0,0" Background="{StaticResource Accent}"
+                            <Border Background="{StaticResource CardBackground}" CornerRadius="8" Padding="15,8">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                </Border.Effect>
+                                <TextBlock Text="Recommended By Genre" FontFamily="Bahnschrift" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Accent}" Margin="0"/>
+                            </Border>
+                            <Button Content="Show Recommended Movies By Genre" Margin="15,0,0,0" Background="{StaticResource Accent}"
                                     Style="{StaticResource ActionButton}" Height="35" Width="300" Click="ShowRecommendedByGenreButton_Click"/>
                         </StackPanel>
 
                         <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
 
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
+                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10,30,20" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource BlackScrollBar}"/>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource ModernScrollBar}"/>
                         </ScrollViewer.Resources>
 
                         <ItemsControl x:Name="RecommendedByGenreList">
