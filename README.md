@@ -5,7 +5,7 @@
 Aplikacja desktopowa napisana w **WPF** (**.NET**), służąca do przeglądania bazy filmów, wyszukiwania, filtrowania oraz otrzymywania inteligentnych rekomendacji filmowych w oparciu o grafową bazę danych **Neo4J**.
 
 ## Wygląd aplikacji
-![Zrzut ekranu aplikacji](Data/MainWindows.png)
+![Zrzut ekranu aplikacji](Data/MainWindow.png)
 
 ---
 
