@@ -18,6 +18,7 @@ namespace Neo4J.Views
 {
     public partial class LoginRegisterWindow : Window
     {
+        private bool isLoggingIn = false;
 
         public LoginRegisterWindow()
         {
@@ -26,6 +27,8 @@ namespace Neo4J.Views
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (isLoggingIn) return;
+
             string username = LoginUsername.Text;
             string password = LoginPassword.Password;
 
@@ -37,6 +40,7 @@ namespace Neo4J.Views
 
             try
             {
+                isLoggingIn = true;
                 ((System.Windows.Controls.Button)sender).IsEnabled = false;
                 if (await Neo4jDriver.Instance.VerifyUser(username, password))
                 {
@@ -50,10 +54,17 @@ namespace Neo4J.Views
                     MessageBox.Show("Login or password are not correct!");
                 }
             }
-            finally { ((System.Windows.Controls.Button)sender).IsEnabled = true; }
+            finally 
+            { 
+                isLoggingIn = false;
+                ((System.Windows.Controls.Button)sender).IsEnabled = true; 
+            }
         }
+        private bool isRegistering = false;
         private async void BtnRegister_Click(object sender, RoutedEventArgs e) 
         {
+            if (isRegistering) return;
+
             string username = RegUsername.Text;
             string email = RegEmail.Text;
             string password = RegPassword.Password;
@@ -93,6 +104,7 @@ namespace Neo4J.Views
 
             try
             {
+                isRegistering = true;
                 string passwordHash = BCrypt.Net.BCrypt.HashPassword(confirmPass);
                 ((System.Windows.Controls.Button)sender).IsEnabled = false;
                 bool success = await Neo4jDriver.Instance.CreateUser(firstName, lastName, email, passwordHash, username);
@@ -103,7 +115,11 @@ namespace Neo4J.Views
                 }
             }
             catch (Exception ex) {MessageBox.Show($"Error: {ex.Message}");}
-            finally { ((System.Windows.Controls.Button)sender).IsEnabled = true;}
+            finally 
+            { 
+                isRegistering = false;
+                ((System.Windows.Controls.Button)sender).IsEnabled = true;
+            }
             
         }
 

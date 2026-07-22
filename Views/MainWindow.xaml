@@ -172,6 +172,64 @@
             </Setter>
         </Style>
 
+        <Style x:Key="RoundActionButton" TargetType="Button" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="100">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.2">
+                                                <DoubleAnimation.EasingFunction><QuadraticEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.2">
+                                                <DoubleAnimation.EasingFunction><QuadraticEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2">
+                                                <DoubleAnimation.EasingFunction><QuadraticEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2">
+                                                <DoubleAnimation.EasingFunction><QuadraticEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="0.95" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="0.95" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="PositiveMovieButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButton}">
             <Setter Property="Background" Value="{StaticResource LikeGreen}"/>
             <Setter Property="Opacity" Value="0.4"/>
@@ -275,12 +333,27 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <StackPanel VerticalAlignment="Center" Margin="0,0,20,0">
-                        <TextBlock Text="Neo4J" Foreground="{StaticResource Accent}"
-                                   FontWeight="Black" FontSize="24" HorizontalAlignment="Right"/>
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,20,0" Orientation="Vertical">
+                        <Viewbox Width="48" Height="48" Margin="0">
+                            <Canvas Width="48" Height="48">
+                                <Path Fill="{StaticResource TextPrimary}" Data="M9.2406 19.4806h0.02165c-2.5616 0 -4.283735 1.4755 -4.283735 4.3789v1.76975c0.264335 -0.11485 0.547285 -0.1808 0.835135 -0.1947 0.2922 -0.01175 0.5822 0.05555 0.8394 0.1947V23.8595c0 -1.86925 1.03415 -2.8558 2.5962 -2.8558 1.56205 0 2.59625 0.98655 2.59625 2.8558v4.52605h1.67455V23.8595c0 -2.9034 -1.7308 -4.3789 -4.27945 -4.3789Zm5.2054 4.57365h-0.0173c0 -2.6568 1.91685 -4.57365 4.67315 -4.57365 2.7563 0 4.6256 1.92985 4.6256 4.57365v0.5928h-7.529c0.19585 1.435 1.45685 2.4818 2.9034 2.4101 1.1337 0 1.9212 -0.3418 2.4145 -1.08175h1.83465c-0.688 1.62265 -2.26305 2.6568 -4.2794 2.6568 -2.70875 0 -4.6256 -1.91685 -4.6256 -4.57795Zm7.5766 -0.8654c-0.3163 -1.32905 -1.53945 -2.24045 -2.9034 -2.16355 -1.35205 -0.07435 -2.559 0.8414 -2.8515 2.16355h5.7549Zm2.6265 0.8654c0 -2.6012 1.8723 -4.51125 4.55775 -4.57215l0.1327 -0.0015c1.23685 -0.049 2.4392 0.4136 3.3242 1.279 0.885 0.86535 1.3745 2.05705 1.3533 3.29465 0 2.6611 -1.9212 4.57795 -4.6775 4.57795 -2.7563 0 -4.69045 -1.91685 -4.69045 -4.57795Zm7.6242 0c0.04705 -0.8088 -0.25375 -1.5992 -0.8266 -2.17205 -0.5729 -0.57285 -1.36325 -0.87365 -2.17205 -0.8266 -0.80505 -0.03195 -1.58685 0.27355 -2.15695 0.84285 -0.57015 0.5693 -0.87675 1.3507 -0.846 2.1558 -0.04705 0.8099 0.2542 1.6014 0.8279 2.17505 0.57365 0.5737 1.3651 0.87495 2.17505 0.82785 1.8217 0.05195 2.99865 -1.22885 2.99865 -3.0029Zm14.63825 -3.9852v8.2646c0 2.1635 -0.83945 3.24955 -3.00295 3.24955h-0.34615v-1.42355h0.19905c1.08175 0 1.4755 -0.4933 1.4755 -1.7308V20.06905h1.67455ZM41.2994 18.3815c0.85485 0.27405 1.433 1.07115 1.42795 1.9688v5.3309h0.9822v1.4755h-0.9822V29.225h-1.67455v-2.0683h-4.23185c-0.7942 0.03505 -1.5393 -0.3845 -1.92115 -1.08175 -0.3161 -0.647 -0.2193 -1.41975 0.2466 -1.9688l3.7818 -4.97175c0.53605 -0.74895 1.5013 -1.0554 2.3712 -0.7529Zm-0.5495 1.58805h-0.14715c-0.1409 0.00595 -0.2701 0.0802 -0.34615 0.19905l-3.72985 4.8722c-0.06355 0.06645 -0.09915 0.1547 -0.09955 0.24665 0 0.23895 0.19375 0.4327 0.4327 0.4327h4.18425V20.3633c0 -0.29425 -0.19475 -0.39375 -0.29425 -0.39375Z" StrokeThickness="0.5"/>
+                                <Path Fill="#018bff" Data="M46.07195 16.2179c-0.7886 0 -1.4279 0.6393 -1.4279 1.4279s0.6393 1.4279 1.4279 1.4279 1.4279 -0.6393 1.4279 -1.4279 -0.6393 -1.4279 -1.4279 -1.4279Z" StrokeThickness="0.5"/>
+                                <Path Fill="#018bff" Data="M5.7184 26.2695c-0.3076 -0.01595 -0.6091 0.08975 -0.839425 0.29425l-1.57503 -1.02985c0.04237 -0.1267 0.06 -0.26035 0.05192 -0.39375 0.001755 -0.5779 -0.345035 -1.0999 -0.878465 -1.3223 -0.533435 -0.22235 -1.148315 -0.10125 -1.55759 0.30675 -0.40928 0.40805 -0.5322415 1.02255 -0.311485 1.55665 0.22076 0.53415 0.7417 0.8825 1.31963 0.8825 0.306535 0.0177 0.607365 -0.0883 0.83511 -0.29425l1.575035 1.08175c-0.03897 0.12745 -0.055085 0.26075 -0.0476 0.3938 -0.00795 0.133 0.00817 0.2664 0.0476 0.39375l-1.575035 1.08605c-0.235945 -0.19225 -0.530755 -0.29765 -0.83511 -0.29855 -0.577535 0 -1.098205 0.3479 -1.31922 0.88145 -0.2210135 0.5336 -0.098845 1.14775 0.309535 1.55615 0.40838 0.4084 1.02255 0.53055 1.556125 0.30955 0.53357 -0.22105 0.88147 -0.7417 0.88147 -1.31925 0.008405 -0.13335 -0.00923 -0.2671 -0.05192 -0.39375l1.57503 -1.08175c0.237525 0.19195 0.534075 0.2959 0.839425 0.29425 0.3783 0 0.74105 -0.1506 1.00815 -0.4185 0.2671 -0.2679 0.4166 -0.6311 0.4155 -1.0094 0.005 -0.7969 -0.6271 -1.45205 -1.42365 -1.47555Z" StrokeThickness="0.5"/>
+                            </Canvas>
+                        </Viewbox>
                         <TextBlock Text="MOVIE EXPLORER" Foreground="{StaticResource TextSecondary}"
-                                   FontSize="10" FontWeight="Bold" HorizontalAlignment="Right"/>
+                                   FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
                     </StackPanel>
+
+                    <Button Width="35" Height="35" Background="Gray" Margin="0,0,15,0" 
+                            Style="{StaticResource RoundActionButton}" Click="ReloadButton_Click" ToolTip="Reload">
+                        <Viewbox Width="18" Height="18">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M21 2v6h-6 M3 12a9 9 0 0 1 15-6.7L21 8 M3 22v-6h6 M21 12a9 9 0 0 1-15 6.7L3 16"
+                                      Stroke="White" StrokeThickness="2.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
 
                     <Button Content="Logout" Width="80" Height="35" Background="Gray" 
                             Style="{StaticResource ActionButton}" Click="LogoutButton_Click"/>
@@ -301,12 +374,45 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Border HorizontalAlignment="Left" Background="{StaticResource CardBackground}" CornerRadius="8" Margin="25,0,0,10" Padding="15,8">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
-                            </Border.Effect>
-                            <TextBlock Text="Movie List" FontFamily="Bahnschrift" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Accent}" Margin="0"/>
-                        </Border>
+                        <Grid Margin="25,0,25,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0" HorizontalAlignment="Left" Background="{StaticResource CardBackground}" CornerRadius="8" Padding="15,8">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                </Border.Effect>
+                                <TextBlock Text="Movie List" FontFamily="Bahnschrift" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Accent}" Margin="0"/>
+                            </Border>
+
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <!-- Search Bar -->
+                                <Border Background="White" CornerRadius="8" Margin="0,0,10,0" Padding="10,5">
+                                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Opacity="0.1"/></Border.Effect>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="Gray"/>
+                                        <TextBox x:Name="SearchMovieBox" Width="150" VerticalAlignment="Center" BorderThickness="0" Background="Transparent"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Genre Filter -->
+                                <Border Background="White" CornerRadius="8" Padding="10,5">
+                                    <Border.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="1" Opacity="0.1"/></Border.Effect>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16" Margin="0,0,5,0">
+                                            <Canvas Width="24" Height="24">
+                                                <Path Data="M20.17 3.91C20.1062 3.78712 20.0101 3.68399 19.8921 3.61173C19.774 3.53947 19.6384 3.50084 19.5 3.5H4.5C4.36157 3.50084 4.226 3.53947 4.10792 3.61173C3.98984 3.68399 3.89375 3.78712 3.83 3.91C3.76636 4.03323 3.73915 4.17204 3.75155 4.31018C3.76395 4.44832 3.81544 4.58007 3.9 4.69L9.25 12V19.75C9.25259 19.9481 9.33244 20.1374 9.47253 20.2775C9.61263 20.4176 9.80189 20.4974 10 20.5H14C14.1981 20.4974 14.3874 20.4176 14.5275 20.2775C14.6676 20.1374 14.7474 19.9481 14.75 19.75V12L20.1 4.69C20.1846 4.58007 20.236 4.44832 20.2484 4.31018C20.2608 4.17204 20.2336 4.03323 20.17 3.91Z" Fill="Gray"/>
+                                            </Canvas>
+                                        </Viewbox>
+                                        <ComboBox x:Name="GenreFilterBox" Width="100" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
+                                        </ComboBox>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
                         <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="White" CornerRadius="2"/>
 
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10,30,20" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">

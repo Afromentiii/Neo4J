@@ -20,6 +20,8 @@
     <None Remove="Fonts\PlaywriteNZBasic-Light.ttf" />
     <None Remove="Fonts\PlaywriteNZBasic-Regular.ttf" />
     <None Remove="Fonts\PlaywriteNZBasic-Thin.ttf" />
+    <None Remove="Icons\filter.svg" />
+    <None Remove="Icons\neo4j.svg" />
     <None Remove="Posters\2001 A Space Odyssey.jpg" />
     <None Remove="Posters\Ant-Man and the Wasp.jpg" />
     <None Remove="Posters\Ant-Man.jpg" />
@@ -61,6 +63,7 @@
     <None Remove="Posters\Thor Ragnarok.jpg" />
     <None Remove="Posters\Thor The Dark World.jpg" />
     <None Remove="Posters\Thor.jpg" />
+    <None Remove="Views\reload.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,7 +71,10 @@
     <Resource Include="Fonts\PlaywriteNZBasic-Light.ttf" />
     <Resource Include="Fonts\PlaywriteNZBasic-Regular.ttf" />
     <Resource Include="Fonts\PlaywriteNZBasic-Thin.ttf" />
+    <Resource Include="Icons\filter.svg" />
+    <Resource Include="Icons\neo4j.svg" />
     <Resource Include="Icons\user.svg" />
+    <Resource Include="Icons\reload.svg" />
     <Resource Include="Posters\2001 A Space Odyssey.jpg" />
     <Resource Include="Posters\Captain America Civil War.jpg" />
     <Resource Include="Posters\Jurassic Park.jpg" />
@@ -152,6 +158,7 @@
     <Resource Include="Posters\Thor Ragnarok.jpg" />
     <Resource Include="Posters\Thor The Dark World.jpg" />
     <Resource Include="Posters\Thor.jpg" />
+    <Resource Include="Views\reload.svg" />
   </ItemGroup>
 
 </Project>

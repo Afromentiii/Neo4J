@@ -28,8 +28,6 @@ namespace Neo4J.Views
         }
         private async void ShowRecommendedMoviesButton_Click(object sender, RoutedEventArgs e) 
         {
-            if(sender is not Button) return;
-
             var recommendedMovies = new List<Movie>();
             recommendedMovies = await Neo4jDriver.Instance.RecommendMoviesForUser(currentUser.Username, 10);
 
@@ -38,12 +36,15 @@ namespace Neo4J.Views
 
         private async void ShowRecommendedByGenreButton_Click(object sender, RoutedEventArgs e) 
         {
-            if (sender is not Button) return;
-
             var recommendedMovies = new List<Movie>();
             recommendedMovies = await Neo4jDriver.Instance.RecommendMoviesByGenre(currentUser.Username);
 
             RecommendedByGenreList.ItemsSource = recommendedMovies;
+        }
+
+        private async void ReloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            await InitMoviesRefresh();
         }
         private void LogoutButton_Click(object sender, RoutedEventArgs e) 
         {
@@ -97,6 +98,32 @@ namespace Neo4J.Views
             UserText.Text = "User: " + currentUser.Username;
         }
 
+        private List<Movie> allMovies = new List<Movie>();
+
+        private void FilterMovies_Changed()
+        {
+            if (allMovies == null || MoviesList == null) return;
+            string searchText = SearchMovieBox.Text?.ToLower() ?? "";
+            string selectedGenre = GenreFilterBox.SelectedItem as string ?? "All Genres";
+
+            var filtered = allMovies.Where(m => 
+                (string.IsNullOrWhiteSpace(searchText) || m.Title.ToLower().Contains(searchText)) &&
+                (selectedGenre == "All Genres" || m.Genre == selectedGenre)
+            ).ToList();
+
+            MoviesList.ItemsSource = filtered;
+        }
+
+        private void FilterMovies_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterMovies_Changed();
+        }
+
+        private void FilterMovies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterMovies_Changed();
+        }
+
         private LoadingWindow? _loadingWindow;
 
         public async Task InitMoviesRefresh()
@@ -125,6 +152,8 @@ namespace Neo4J.Views
             var likedTitles = await tLiked;
             var movies = await tMovies;
             var users = await tUsers;
+            
+            allMovies = movies;
 
             foreach (var movie in movies)
             {
@@ -137,8 +166,20 @@ namespace Neo4J.Views
                 if (followedUsers.Contains(u.Username)) u.IsFollowed = true;
             }
 
-            MoviesList.ItemsSource = movies;
+            var genres = allMovies.Select(m => m.Genre).Distinct().OrderBy(g => g).ToList();
+            genres.Insert(0, "All Genres");
+            GenreFilterBox.SelectionChanged -= FilterMovies_SelectionChanged;
+            SearchMovieBox.TextChanged -= FilterMovies_TextChanged;
+            GenreFilterBox.ItemsSource = genres;
+            if (GenreFilterBox.SelectedIndex == -1) GenreFilterBox.SelectedIndex = 0;
+            GenreFilterBox.SelectionChanged += FilterMovies_SelectionChanged;
+            SearchMovieBox.TextChanged += FilterMovies_TextChanged;
+
+            FilterMovies_Changed();
             UsersList.ItemsSource = users;
+
+            ShowRecommendedMoviesButton_Click(this, new RoutedEventArgs());
+            ShowRecommendedByGenreButton_Click(this, new RoutedEventArgs());
 
             MainContentScroll.Visibility = Visibility.Visible;
 

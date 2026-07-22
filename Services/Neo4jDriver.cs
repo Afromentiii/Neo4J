@@ -288,6 +288,7 @@ namespace Neo4J.Services
         {
             var query = @"
             MATCH (u:User {username: $username})-[:LIKED]->(:Movie)-[:IN_GENRE]->(g:Genre)
+            WITH DISTINCT g, u
             MATCH (g)<-[:IN_GENRE]-(m:Movie)
             WHERE NOT (u)-[:LIKED]->(m)
             RETURN m.title AS title,
