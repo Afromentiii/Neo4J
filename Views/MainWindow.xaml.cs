@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using Neo4J.Models;
 using Neo4J.Services;
 using Neo4J;
+using System.Threading;
 
 namespace Neo4J.Views
 {
@@ -97,10 +98,25 @@ namespace Neo4J.Views
             UserText.Text = "User: " + currentUser.Username;
         }
 
+        private LoadingWindow? _loadingWindow;
+
         public async Task InitMoviesRefresh()
         {
-            LoadingOverlay.Visibility = Visibility.Visible;
             MainContentScroll.Visibility = Visibility.Collapsed;
+
+            ManualResetEvent windowCreatedEvent = new ManualResetEvent(false);
+            Thread loadingThread = new Thread(() =>
+            {
+                _loadingWindow = new LoadingWindow();
+                _loadingWindow.Show();
+                windowCreatedEvent.Set();
+                System.Windows.Threading.Dispatcher.Run();
+            });
+            loadingThread.SetApartmentState(ApartmentState.STA);
+            loadingThread.IsBackground = true;
+            loadingThread.Start();
+
+            windowCreatedEvent.WaitOne();
 
             var tLiked = Neo4jDriver.Instance.GetLikedMovieTitles(currentUser.Username);
             var tMovies = Neo4jDriver.Instance.GetMovies();
@@ -125,8 +141,20 @@ namespace Neo4J.Views
             MoviesList.ItemsSource = movies;
             UsersList.ItemsSource = users;
 
-            LoadingOverlay.Visibility = Visibility.Collapsed;
             MainContentScroll.Visibility = Visibility.Visible;
+
+            await Application.Current.Dispatcher.InvokeAsync(() => { }, System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+            await Task.Delay(100);
+
+            if (_loadingWindow != null)
+            {
+                _loadingWindow.Dispatcher.Invoke(() =>
+                {
+                    _loadingWindow.Close();
+                });
+                _loadingWindow.Dispatcher.InvokeShutdown();
+                _loadingWindow = null;
+            }
         }
 
         private void InnerScroll_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

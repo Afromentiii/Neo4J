@@ -201,6 +201,18 @@
             <Setter Property="Background" Value="{StaticResource DislikeRed}"/>
             <Setter Property="Opacity" Value="0.4"/>
         </Style>
+
+        <Style x:Key="SectionContainer" TargetType="Border">
+            <Setter Property="Background" Value="#f7f7f7"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="25,20,25,10"/>
+            <Setter Property="Padding" Value="0,20,0,10"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="4" Opacity="0.15" Direction="270"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -243,26 +255,22 @@
             </Grid>
         </Border>
 
-        <Grid x:Name="LoadingOverlay" Grid.Row="1" Background="#EEF0F8" Panel.ZIndex="10">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Fetching movies from Neo4J..." FontSize="20" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#666" HorizontalAlignment="Center"/>
-                <ProgressBar IsIndeterminate="True" Width="250" Height="8" Margin="0,15,0,0" Foreground="DarkBlue" BorderThickness="0" Background="#DDD"/>
-            </StackPanel>
-        </Grid>
+
 
         <ScrollViewer x:Name="MainContentScroll" Grid.Row="1" VerticalScrollBarVisibility="Auto" Visibility="Collapsed">
             <StackPanel Margin="0,0,0,30">
 
-                <Grid Margin="0,20,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="4"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <Border Style="{StaticResource SectionContainer}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <TextBlock Text="Movie List" FontSize="20" FontWeight="Bold" 
-                               Margin="45,0,0,10" Foreground="{StaticResource Accent}"/>
-                    <Border Grid.Row="1" Height="4" Margin="45,0,45,10" Background="White" CornerRadius="2"/>
+                        <TextBlock Text="Movie List" FontSize="20" FontWeight="Bold" 
+                                   Margin="25,0,0,10" Foreground="{StaticResource Accent}"/>
+                        <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="White" CornerRadius="2"/>
 
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
@@ -307,18 +315,20 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
-                </Grid>
+                    </Grid>
+                </Border>
 
-                <Grid Margin="0,10,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="4"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <Border Style="{StaticResource SectionContainer}" Margin="25,10,25,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <TextBlock Text="User List" FontSize="20" FontWeight="Bold" 
-                               Margin="45,0,0,10" Foreground="{StaticResource Accent}"/>
-                    <Border Grid.Row="1" Height="4" Margin="45,0,45,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
+                        <TextBlock Text="User List" FontSize="20" FontWeight="Bold" 
+                                   Margin="25,0,0,10" Foreground="{StaticResource Accent}"/>
+                        <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
 
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
@@ -336,7 +346,7 @@
                                     <Border Style="{StaticResource MovieCard}" Height="160" Width="180">
                                         <StackPanel VerticalAlignment="Center">
                                             <Grid Width="50" Height="50" Margin="0,0,0,10">
-                                                <Ellipse Fill="#DDD"/>
+                                                    <Ellipse Fill="#f5f5f5"/>
                                                 <Viewbox Margin="9">
                                                     <Path Data="M16 16c4.4182 0 8 -3.58172 8 -8s-3.5818 -8 -8 -8C11.58172 0 8 3.58172 8 8s3.58172 8 8 8Zm0 0c-8.83656 0 -16 7.1634 -16 16h32c0 -8.8366 -7.1634 -16 -16 -16Z" Fill="#999"/>
                                                 </Viewbox>
@@ -356,22 +366,24 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
-                </Grid>
+                    </Grid>
+                </Border>
 
-                <Grid Margin="0,10,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="4"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <Border Style="{StaticResource SectionContainer}" Margin="25,10,25,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="45,0,0,10" VerticalAlignment="Center">
-                        <TextBlock Text="Recommended By People" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent}"/>
-                        <Button Content="Show Recommended Movies By People" Margin="10,0,0,0" Background="{StaticResource Accent}"
-                                Style="{StaticResource ActionButton}" Height="35" Width="300" Click="ShowRecommendedMoviesButton_Click"/>
-                    </StackPanel>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="25,0,0,10" VerticalAlignment="Center">
+                            <TextBlock Text="Recommended By People" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent}"/>
+                            <Button Content="Show Recommended Movies By People" Margin="10,0,0,0" Background="{StaticResource Accent}"
+                                    Style="{StaticResource ActionButton}" Height="35" Width="300" Click="ShowRecommendedMoviesButton_Click"/>
+                        </StackPanel>
 
-                    <Border Grid.Row="1" Height="4" Margin="45,0,45,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
+                        <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
 
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
@@ -413,22 +425,24 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
-                </Grid>
+                    </Grid>
+                </Border>
 
-                <Grid Margin="0,10,0,40">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="4"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <Border Style="{StaticResource SectionContainer}" Margin="25,10,25,40">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="45,0,0,10" VerticalAlignment="Center">
-                        <TextBlock Text="Recommended By Genre" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent}"/>
-                        <Button Content="Show Recommended Movies By Genre" Margin="10,0,0,0" Background="{StaticResource Accent}"
-                                Style="{StaticResource ActionButton}" Height="35" Width="300" Click="ShowRecommendedByGenreButton_Click"/>
-                    </StackPanel>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="25,0,0,10" VerticalAlignment="Center">
+                            <TextBlock Text="Recommended By Genre" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent}"/>
+                            <Button Content="Show Recommended Movies By Genre" Margin="10,0,0,0" Background="{StaticResource Accent}"
+                                    Style="{StaticResource ActionButton}" Height="35" Width="300" Click="ShowRecommendedByGenreButton_Click"/>
+                        </StackPanel>
 
-                    <Border Grid.Row="1" Height="4" Margin="45,0,45,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
+                        <Border Grid.Row="1" Height="4" Margin="25,0,25,10" Background="Black" Opacity="0.1" CornerRadius="2"/>
 
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Padding="30,10" PreviewMouseWheel="InnerScroll_PreviewMouseWheel">
                         <ScrollViewer.Resources>
@@ -470,7 +484,8 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
-                </Grid>
+                    </Grid>
+                </Border>
 
             </StackPanel>
         </ScrollViewer>

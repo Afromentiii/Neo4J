@@ -1,0 +1,17 @@
+<Window x:Class="Neo4J.Views.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Loading..." Height="200" Width="400"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True" Background="Transparent"
+        Topmost="True">
+    <Border Background="#EEF0F8" CornerRadius="15" BorderBrush="#AAA" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+        </Border.Effect>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Fetching movies from Neo4J..." FontSize="20" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#666" HorizontalAlignment="Center"/>
+            <ProgressBar IsIndeterminate="True" Width="250" Height="8" Margin="0,15,0,0" Foreground="DarkBlue" BorderThickness="0" Background="#DDD"/>
+        </StackPanel>
+    </Border>
+</Window>

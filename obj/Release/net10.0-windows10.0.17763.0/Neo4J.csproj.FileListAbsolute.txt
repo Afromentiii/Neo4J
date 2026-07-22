@@ -34,3 +34,5 @@ E:\Visual\Neo4JGIT\Neo4J\obj\Release\net10.0-windows10.0.17763.0\Views\MainWindo
 E:\Visual\Neo4JGIT\Neo4J\obj\Release\net10.0-windows10.0.17763.0\Views\InstallWindow.g.cs
 E:\Visual\Neo4JGIT\Neo4J\obj\Release\net10.0-windows10.0.17763.0\Views\LoginRegisterWindow.g.cs
 E:\Visual\Neo4JGIT\Neo4J\obj\Release\net10.0-windows10.0.17763.0\Views\MainWindow.g.cs
+E:\Visual\Neo4JGIT\Neo4J\obj\Release\net10.0-windows10.0.17763.0\Views\LoadingWindow.baml
+E:\Visual\Neo4JGIT\Neo4J\obj\Release\net10.0-windows10.0.17763.0\Views\LoadingWindow.g.cs
