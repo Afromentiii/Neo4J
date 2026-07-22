@@ -180,14 +180,6 @@
                                                         </BeginStoryboard>
                                                     </Trigger.ExitActions>
                                                 </Trigger>
-                                                <EventTrigger RoutedEvent="Button.Click">
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="0.9" Duration="0:0:0.08" AutoReverse="True"/>
-                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="0.9" Duration="0:0:0.08" AutoReverse="True"/>
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </EventTrigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                     </Setter.Value>

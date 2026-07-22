@@ -128,7 +128,16 @@ namespace Neo4J.Views
             LoadingOverlay.Visibility = Visibility.Collapsed;
             MainContentScroll.Visibility = Visibility.Visible;
         }
+
+        private void InnerScroll_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                return;
+            }
+
+            MainContentScroll.ScrollToVerticalOffset(MainContentScroll.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
     }
-
-
 }

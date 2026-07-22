@@ -52,7 +52,6 @@ namespace Neo4J.Views
                             else if (key == "NEO4J_PASSWORD") TxtPassword.Password = value;
                         }
                     }
-                    MessageBox.Show("Credentials imported successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {

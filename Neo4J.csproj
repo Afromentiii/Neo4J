@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Icons\**" />
+    <EmbeddedResource Remove="Views\Icons\**" />
+    <None Remove="Views\Icons\**" />
+    <Page Remove="Views\Icons\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Fonts\PlaywriteNZBasic-ExtraLight.ttf" />
     <None Remove="Fonts\PlaywriteNZBasic-Light.ttf" />
     <None Remove="Fonts\PlaywriteNZBasic-Regular.ttf" />
@@ -61,6 +68,7 @@
     <Resource Include="Fonts\PlaywriteNZBasic-Light.ttf" />
     <Resource Include="Fonts\PlaywriteNZBasic-Regular.ttf" />
     <Resource Include="Fonts\PlaywriteNZBasic-Thin.ttf" />
+    <Resource Include="Icons\user.svg" />
     <Resource Include="Posters\2001 A Space Odyssey.jpg" />
     <Resource Include="Posters\Captain America Civil War.jpg" />
     <Resource Include="Posters\Jurassic Park.jpg" />
